@@ -22,7 +22,7 @@
                         <x-label for="warehouse_id" :value="__('Warehouse')" />
                         <x-select id="warehouse_id" class="block mt-1 w-full" type="text" name="warehouse_id"
                             wire:model="form.warehouse_id">
-                            <option value="">Select Warehouse</option>
+                            <option value="">{{ __('Select Warehouse') }}</option>
                             @foreach ($this->warehouses as $index => $warehouse)
                                 <option value="{{ $index }}">{{ $warehouse }}</option>
                             @endforeach

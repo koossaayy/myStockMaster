@@ -190,7 +190,7 @@
                             <div class="w-1/4 mb-3">
                                 <h5 class="mb-2 border-bottom pb-2">{{ __('Invoice Info') }}:</h5>
                                 <div>{{ __('Invoice') }}:
-                                    <strong>INV/{{ $purchasereturn?->reference }}</strong>
+                                    <strong>{{ __('INV/:param_1', ['param_1' => $purchasereturn?->reference]) }}</strong>
                                 </div>
                                 <div>{{ __('Date') }}:
                                     {{ format_date($purchasereturn?->date) }}

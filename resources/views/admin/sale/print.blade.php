@@ -20,7 +20,7 @@
         <p class="text-sm text-gray-600">{{ $customer->address }}</p>
         <p class="text-sm text-gray-600">{{ $customer->phone }}</p>
         <p class="text-sm text-gray-600">{{ $customer->email }}</p>
-        <p class="text-sm text-gray-600 mt-1"><span class="font-semibold">{{ __('Tax Number') }}:</span> {{ $customer->tax_number ?? 'N/A' }}</p>
+        <p class="text-sm text-gray-600 mt-1"><span class="font-semibold">{{ __('Tax Number') }}:</span> {{ $customer->tax_number ?? __('N/A') }}</p>
     </div>
 
     <div class="overflow-x-auto rounded-lg border border-gray-200">

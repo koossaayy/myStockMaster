@@ -5,9 +5,9 @@
 @section('breadcrumb')
     <ol class="breadcrumb border-0 m-0">
         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">{{ __('Home') }}</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('sales.index') }}">Sales</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('sales.index') }}">{{ __('Sales') }}</a></li>
         <li class="breadcrumb-item"><a href="{{ route('sales.show', $sale) }}">{{ $sale->reference }}</a></li>
-        <li class="breadcrumb-item active">Edit Payment</li>
+        <li class="breadcrumb-item active">{{ __('Edit Payment') }}</li>
     </ol>
 @endsection
 
@@ -21,8 +21,7 @@
                     @include('utils.alerts')
                     <div class="mb-4">
                         <button
-                            class="block uppercase mx-auto shadow bg-indigo-800 hover:bg-indigo-700 focus:shadow-outline focus:outline-hidden text-white text-xs py-3 px-10 rounded-sm">Update
-                            Payment <i class="bi bi-check"></i></button>
+                            class="block uppercase mx-auto shadow bg-indigo-800 hover:bg-indigo-700 focus:shadow-outline focus:outline-hidden text-white text-xs py-3 px-10 rounded-sm">{{ __('Update Payment') }} <i class="bi bi-check"></i></button>
                     </div>
                 </div>
                 <div class="w-full px-4">
@@ -72,13 +71,13 @@
                                         class="block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md mt-1"
                                         name="payment_method" id="payment_method" required>
                                         <option {{ $salePayment->payment_method == 'Cash' ? 'selected' : '' }}
-                                            value="Cash">Cash</option>
+                                            value="Cash">{{ __('Cash') }}</option>
                                         <option {{ $salePayment->payment_method == 'Bank Transfer' ? 'selected' : '' }}
-                                            value="Bank Transfer">Bank Transfer</option>
+                                            value="Bank Transfer">{{ __('Bank Transfer') }}</option>
                                         <option {{ $salePayment->payment_method == 'Cheque' ? 'selected' : '' }}
-                                            value="Cheque">Cheque</option>
+                                            value="Cheque">{{ __('Cheque') }}</option>
                                         <option {{ $salePayment->payment_method == 'Other' ? 'selected' : '' }}
-                                            value="Other">Other</option>
+                                            value="Other">{{ __('Other') }}</option>
                                     </x-select>
                                 </div>
                             </div>

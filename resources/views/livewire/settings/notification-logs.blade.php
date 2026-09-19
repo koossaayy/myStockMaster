@@ -30,8 +30,8 @@
                             </span>
                         </td>
                         <td class="px-4 py-3">
-                            <div class="font-medium text-gray-900">{{ $data['subject'] ?? 'System Notification' }}</div>
-                            <div class="text-xs text-gray-500 mt-0.5">Status: {{ $data['status'] ?? 'completed' }}</div>
+                            <div class="font-medium text-gray-900">{{ $data['subject'] ?? __('System Notification') }}</div>
+                            <div class="text-xs text-gray-500 mt-0.5">{{ __('Status: :param_1', ['param_1' => $data['status'] ?? 'completed']) }}</div>
                         </td>
                     </tr>
                 @empty

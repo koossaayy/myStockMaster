@@ -26,11 +26,11 @@
         } else if (event.key === 'ArrowUp') {
             event.preventDefault();
             $wire.highlightPrev();
-        } else if (event.key === 'Enter') {
+        } else if (event.key === '{{ __('Enter') }}') {
             event.preventDefault();
             $wire.selectHighlighted();
             this.open = false;
-        } else if (event.key === 'Escape') {
+        } else if (event.key === '{{ __('Escape') }}') {
             this.closeDropdown();
         }
     }

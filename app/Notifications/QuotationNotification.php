@@ -13,7 +13,7 @@ class QuotationNotification extends BaseSystemNotification
 
     public function __construct(Quotation $quotation, string $channelType = 'mail')
     {
-        parent::__construct('Quotation Details - ' . $quotation->reference, $channelType);
+        parent::__construct(__('Quotation Details - :reference', ['reference' => $quotation->reference]), $channelType);
         $this->quotation = $quotation;
     }
 

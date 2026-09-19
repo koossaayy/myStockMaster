@@ -44,7 +44,7 @@ final readonly class HandleNotificationFailureAction
             $this->notificationService->notifyManagement(
                 $sale,
                 $sale->status,
-                'Sale processing failed: ' . $exception->getMessage(),
+                __('Sale processing failed: :message', ['message' => $exception->getMessage()]),
             );
 
             // Notify customer about potential delays
@@ -76,7 +76,7 @@ final readonly class HandleNotificationFailureAction
             $this->notificationService->notifyManagement(
                 $sale,
                 $sale->status,
-                sprintf('Status change failed from %s to %s: %s', $oldStatus, $newStatus, $exception->getMessage()),
+                sprintf(__('Status change failed from %s to %s: %s'), $oldStatus, $newStatus, $exception->getMessage()),
             );
 
             // Attempt to revert status if possible
@@ -102,14 +102,14 @@ final readonly class HandleNotificationFailureAction
 
             if ($sale->customer_phone) {
                 // Send SMS about delay
-                $message = sprintf("We're experiencing a slight delay with your sale #%s. We'll update you shortly.", $sale->reference);
+                $message = sprintf(__("We're experiencing a slight delay with your sale #%s. We'll update you shortly."), $sale->reference);
                 $this->notificationService->sendSmsNotification($sale->customer_phone, $message);
             }
 
             // Send push notification if available
             $this->notificationService->sendRealTimeNotification('sale-delays', [
                 'order_id' => $sale->id,
-                'message' => 'Your sale is experiencing a slight delay',
+                'message' => __('Your sale is experiencing a slight delay'),
             ]);
         } catch (Throwable $throwable) {
             Log::error('Failed to notify customer about processing delay', [
@@ -124,7 +124,9 @@ final readonly class HandleNotificationFailureAction
         try {
             // Add a note to the sale about the failure
             $sale->update([
-                'notes' => ($sale->notes ?? '') . "\n\nProcessing failure: {$exception->getMessage()} at " . now()->toDateTimeString(),
+                'notes' => ($sale->notes ?? '') . __('
+
+Processing failure: :message at ', ['message' => $exception->getMessage()]) . now()->toDateTimeString(),
                 'requires_manual_review' => true,
             ]);
 

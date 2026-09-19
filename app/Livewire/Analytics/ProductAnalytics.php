@@ -104,7 +104,7 @@ class ProductAnalytics extends Component
                 $this->loadComparisonData($dateFrom, $dateTo);
             }
         } catch (Exception $exception) {
-            session()->flash('error', 'Failed to load product analytics: ' . $exception->getMessage());
+            session()->flash('error', __('Failed to load product analytics: :message', ['message' => $exception->getMessage()]));
         }
     }
 
@@ -199,7 +199,7 @@ class ProductAnalytics extends Component
                 'Content-Type' => 'application/json',
             ]);
         } catch (Exception $exception) {
-            session()->flash('error', 'Failed to export analytics: ' . $exception->getMessage());
+            session()->flash('error', __('Failed to export analytics: :message', ['message' => $exception->getMessage()]));
         }
     }
 

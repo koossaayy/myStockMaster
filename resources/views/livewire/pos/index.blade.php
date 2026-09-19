@@ -12,8 +12,8 @@
             this.scanError = new Audio('{{ asset('sounds/error.mp3') }}');
             this.scanError.volume = 0.3;
 
-            this.scanBeep.onerror = () => console.warn('Audio file not found: sounds/beep.mp3');
-            this.scanError.onerror = () => console.warn('Audio file not found: sounds/error.mp3');
+            this.scanBeep.onerror = () => console.warn('{{ __('Audio file not found: sounds/beep.mp3') }}');
+            this.scanError.onerror = () => console.warn('{{ __('Audio file not found: sounds/error.mp3') }}');
 
             this.$watch('showCheckout', value => {
                 if (value) {
@@ -52,7 +52,7 @@
                     <h3 class="text-md font-semibold text-gray-900 dark:text-gray-100">
                         <i class="fas fa-search mr-2 text-blue-500" aria-hidden="true"></i>
                         {{ __('Select Products') }}
-                        <kbd class="ml-2 px-2 py-0.5 text-xs bg-gray-200 dark:bg-gray-700 rounded border border-gray-300 dark:border-gray-600">Ctrl+F</kbd>
+                        <kbd class="ml-2 px-2 py-0.5 text-xs bg-gray-200 dark:bg-gray-700 rounded border border-gray-300 dark:border-gray-600">{{ __('Ctrl+F') }}</kbd>
                     </h3>
                 </div>
                 <div class="p-3">
@@ -166,7 +166,7 @@
                     >
                         <i class="fas fa-cash-register mr-2" aria-hidden="true"></i>
                         {{ __('Checkout') }}
-                        <kbd class="ml-2 px-2 py-0.5 text-xs bg-green-700 rounded border border-green-800">Ctrl+Enter</kbd>
+                        <kbd class="ml-2 px-2 py-0.5 text-xs bg-green-700 rounded border border-green-800">{{ __('Ctrl+Enter') }}</kbd>
                     </button>
 
                     <button

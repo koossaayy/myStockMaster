@@ -90,14 +90,14 @@ class Messaging extends Component
         switch ($template) {
             case 'productMessage':
                 // Fill in product information message
-                $this->message = 'Information: ...'; // replace ... with actual product information
+                $this->message = __('Information: ...'); // replace ... with actual product information
                 $this->openTemplate = false;
                 $this->openProductModal = true;
 
                 break;
             case 'clientMessage':
                 // Fill in sale due amount message
-                $this->message = 'Sale Due Amount: ...'; // replace ... with actual sale due amount
+                $this->message = __('Sale Due Amount: ...'); // replace ... with actual sale due amount
                 $this->openTemplate = false;
 
                 break;
@@ -114,7 +114,7 @@ class Messaging extends Component
     {
         $sale = Sale::query()->findOrFail($saleId);
 
-        $message = sprintf('Due Amount for Sale %s: ', $sale->id) . format_currency($sale->due_amount);
+        $message = sprintf(__('Due Amount for Sale %s: '), $sale->id) . format_currency($sale->due_amount);
 
         $this->chatId = settings()->telegram_channel;
         $this->message = $message;

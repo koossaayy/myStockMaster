@@ -13,7 +13,7 @@ class PaymentPurchaseNotification extends BaseSystemNotification
 
     public function __construct(PurchasePayment $payment, string $channelType = 'mail')
     {
-        parent::__construct('Payment Details - ' . $payment->reference, $channelType);
+        parent::__construct(__('Payment Details - :reference', ['reference' => $payment->reference]), $channelType);
         $this->payment = $payment;
     }
 

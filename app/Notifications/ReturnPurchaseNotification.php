@@ -13,7 +13,7 @@ class ReturnPurchaseNotification extends BaseSystemNotification
 
     public function __construct(PurchaseReturn $purchaseReturn, string $channelType = 'mail')
     {
-        parent::__construct('Purchase Return Details - ' . $purchaseReturn->reference, $channelType);
+        parent::__construct(__('Purchase Return Details - :reference', ['reference' => $purchaseReturn->reference]), $channelType);
         $this->purchaseReturn = $purchaseReturn;
     }
 

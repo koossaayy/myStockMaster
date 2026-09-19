@@ -467,22 +467,22 @@
 
                     let options = {
                         series: [{
-                                name: "Sales Total Amount",
+                                name: @json(__("Sales Total Amount")),
                                 data: tes.total.sales,
                                 color: '#10b981'
                             },
                             {
-                                name: "Sales Due Amount",
+                                name: @json(__("Sales Due Amount")),
                                 data: tes.due_amount.sales,
                                 color: '#f59e0b'
                             },
                             {
-                                name: "Purchase Total Amount",
+                                name: @json(__("Purchase Total Amount")),
                                 data: tes.total.purchase,
                                 color: '#3b82f6'
                             },
                             {
-                                name: "Purchase Due Amount",
+                                name: @json(__("Purchase Due Amount")),
                                 data: tes.due_amount.purchase,
                                 color: '#ef4444'
                             }
@@ -555,7 +555,7 @@
                         },
                         yaxis: {
                             title: {
-                                text: "Amount",
+                                text: @json(__("Amount")),
                                 style: {
                                     color: colors.textColor
                                 }

@@ -91,7 +91,7 @@
                                         {{ $adjustment->reference }}
                                     </div>
                                     <div class="text-xs text-gray-500 dark:text-gray-400">
-                                        ID: {{ $adjustment->id }}
+                                        {{ __('ID: :param_1', ['param_1' => $adjustment->id]) }}
                                     </div>
                                 </div>
                             </div>

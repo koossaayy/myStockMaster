@@ -2,7 +2,7 @@
     <nav class="flex items-center justify-between px-8 h-16">
         <div class="flex items-center gap-12">
             <a href="{{ route('dashboard') }}" class="flex items-center gap-3">
-                <img class="w-10 h-auto" src="{{ asset('images/logo.png') }}" alt="Site Logo">
+                <img class="w-10 h-auto" src="{{ asset('images/logo.png') }}" alt="{{ __('Site Logo') }}">
                 <div class="hidden sm:block">
                     <span class="text-xl font-black tracking-tighter text-primary-600 dark:text-primary-400">{{ config('settings.site_title') }}</span>
                     <span class="ml-2 text-sm text-gray-400 dark:text-gray-500 font-medium">|</span>
@@ -27,7 +27,7 @@
             <x-dropdown align="right" width="56">
                 <x-slot name="trigger">
                     <button type="button" class="text-blue-500 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors">
-                        <span class="sr-only">Open POS menu</span>
+                        <span class="sr-only">{{ __('Open POS menu') }}</span>
                         <x-icons.menu class="w-6 h-6" />
                     </button>
                 </x-slot>

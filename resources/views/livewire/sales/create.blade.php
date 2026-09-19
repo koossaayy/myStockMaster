@@ -14,7 +14,7 @@
             </x-button>
             <x-button success type="button" wire:click.throttle="proceed" wire:loading.attr="disabled" :disabled="$form->total_amount == 0">
                 <i class="fas fa-check mr-2"></i>
-                {{ __('Complete Sale') }} (Ctrl+S)
+                {{ __(':param_1 (Ctrl+S)', ['param_1' => __('Complete Sale')]) }}
             </x-button>
         </div>
     </x-theme.breadcrumb>

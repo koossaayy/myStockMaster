@@ -5,9 +5,9 @@
 @section('breadcrumb')
     <ol class="breadcrumb border-0 m-0">
         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">{{__('Home')}}</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('sale-returns.index') }}">Sale Returns</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('sale-returns.index') }}">{{ __('Sale Returns') }}</a></li>
         <li class="breadcrumb-item"><a href="{{ route('sale-returns.show', $sale_return) }}">{{ $sale_return->reference }}</a></li>
-        <li class="breadcrumb-item active">Add Payment</li>
+        <li class="breadcrumb-item active">{{ __('Add Payment') }}</li>
     </ol>
 @endsection
 
@@ -19,7 +19,7 @@
                 <div class="w-full px-4">
                     @include('utils.alerts')
                     <div class="mb-4">
-                        <button class="block uppercase mx-auto shadow bg-indigo-800 hover:bg-indigo-700 focus:shadow-outline focus:outline-hidden text-white text-xs py-3 px-10 rounded-sm">Create Payment <i class="bi bi-check"></i></button>
+                        <button class="block uppercase mx-auto shadow bg-indigo-800 hover:bg-indigo-700 focus:shadow-outline focus:outline-hidden text-white text-xs py-3 px-10 rounded-sm">{{ __('Create Payment') }} <i class="bi bi-check"></i></button>
                     </div>
                 </div>
                 <div class="w-full px-4">
@@ -63,10 +63,10 @@
                                         <div class="mb-4">
                                             <label for="payment_method">{{__('Payment Method')}} <span class="text-red-500">*</span></label>
                                             <x-select class="block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md mt-1" name="payment_method" id="payment_method" required>
-                                                <option value="Cash">Cash</option>
-                                                <option value="Bank Transfer">Bank Transfer</option>
-                                                <option value="Cheque">Cheque</option>
-                                                <option value="Other">Other</option>
+                                                <option value="Cash">{{ __('Cash') }}</option>
+                                                <option value="Bank Transfer">{{ __('Bank Transfer') }}</option>
+                                                <option value="Cheque">{{ __('Cheque') }}</option>
+                                                <option value="Other">{{ __('Other') }}</option>
                                             </x-select>
                                         </div>
                                     </div>

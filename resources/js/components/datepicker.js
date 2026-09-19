@@ -1,3 +1,4 @@
+import i18next from 'i18next';
 export default () => {
     return {
         showDatepicker: false,
@@ -6,8 +7,8 @@ export default () => {
         year: '',
         no_of_days: [],
         blankdays: [],
-        days: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-        MONTH_NAMES: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+        get days() { return [i18next.t('Sun'), i18next.t('Mon'), i18next.t('Tue'), i18next.t('Wed'), i18next.t('Thu'), i18next.t('Fri'), i18next.t('Sat')]; },
+        get MONTH_NAMES() { return [i18next.t('January'), i18next.t('February'), i18next.t('March'), i18next.t('April'), i18next.t('May'), i18next.t('June'), i18next.t('July'), i18next.t('August'), i18next.t('September'), i18next.t('October'), i18next.t('November'), i18next.t('December')]; },
 
         initDate(val = null) {
             let today = val ? new Date(val) : new Date();

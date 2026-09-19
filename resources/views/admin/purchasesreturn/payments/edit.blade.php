@@ -5,10 +5,10 @@
 @section('breadcrumb')
     <ol class="breadcrumb border-0 m-0">
         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">{{ __('Home') }}</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('purchase-returns.index') }}">Purchase Returns</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('purchase-returns.index') }}">{{ __('Purchase Returns') }}</a></li>
         <li class="breadcrumb-item"><a
                 href="{{ route('purchase-returns.show', $purchase_return) }}">{{ $purchase_return->reference }}</a></li>
-        <li class="breadcrumb-item active">Edit Payment</li>
+        <li class="breadcrumb-item active">{{ __('Edit Payment') }}</li>
     </ol>
 @endsection
 
@@ -82,16 +82,16 @@
                                                 name="payment_method" id="payment_method" required>
                                                 <option
                                                     {{ $purchaseReturnPayment->payment_method == 'Cash' ? 'selected' : '' }}
-                                                    value="Cash">Cash</option>
+                                                    value="Cash">{{ __('Cash') }}</option>
                                                 <option
                                                     {{ $purchaseReturnPayment->payment_method == 'Bank Transfer' ? 'selected' : '' }}
-                                                    value="Bank Transfer">Bank Transfer</option>
+                                                    value="Bank Transfer">{{ __('Bank Transfer') }}</option>
                                                 <option
                                                     {{ $purchaseReturnPayment->payment_method == 'Cheque' ? 'selected' : '' }}
-                                                    value="Cheque">Cheque</option>
+                                                    value="Cheque">{{ __('Cheque') }}</option>
                                                 <option
                                                     {{ $purchaseReturnPayment->payment_method == 'Other' ? 'selected' : '' }}
-                                                    value="Other">Other</option>
+                                                    value="Other">{{ __('Other') }}</option>
                                             </x-select>
                                         </div>
                                     </div>

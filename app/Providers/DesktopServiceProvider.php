@@ -43,12 +43,12 @@ class DesktopServiceProvider extends ServiceProvider
                 if (class_exists(Menu::class)) {
                     Menu::new()
                         ->appMenu()
-                        ->submenu('View', NativeMenu::new()
+                        ->submenu(__('View'), NativeMenu::new()
                             ->event(\Native\Laravel\Events\App\WindowToggled::class, 'Toggle Fullscreen', 'CmdOrCtrl+F')
                             ->event('native.navigate.dashboard', 'Dashboard', 'CmdOrCtrl+D')
                             ->event('native.navigate.settings', 'Settings', 'CmdOrCtrl+,')
                         )
-                        ->submenu('Data', NativeMenu::new()
+                        ->submenu(__('Data'), NativeMenu::new()
                             ->event('native.sync.trigger', 'Sync with Cloud', 'CmdOrCtrl+S')
                         )
                         ->register();
@@ -90,9 +90,9 @@ class DesktopServiceProvider extends ServiceProvider
         try {
             $syncService = resolve(DatabaseSyncService::class);
             $syncService->syncToOnline();
-            $this->showNotification('Sync Complete', 'Data synchronized with online database successfully.');
+            $this->showNotification(__('Sync Complete'), __('Data synchronized with online database successfully.'));
         } catch (Exception $exception) {
-            $this->showNotification('Sync Failed', 'Failed to sync with online database: ' . $exception->getMessage());
+            $this->showNotification(__('Sync Failed'), __('Failed to sync with online database: :message', ['message' => $exception->getMessage()]));
         }
     }
 
@@ -106,8 +106,8 @@ class DesktopServiceProvider extends ServiceProvider
         Cache::store('file')->forever('desktop_offline_mode', $newMode);
 
         $this->showNotification(
-            'Mode Changed',
-            $newMode ? 'Switched to Offline Mode' : 'Switched to Online Mode'
+            __('Mode Changed'),
+            $newMode ? __('Switched to Offline Mode') : __('Switched to Online Mode')
         );
 
         // Reload window to apply database connection change
@@ -129,9 +129,9 @@ class DesktopServiceProvider extends ServiceProvider
             Artisan::call('cache:clear');
             Artisan::call('config:clear');
             Artisan::call('view:clear');
-            $this->showNotification('Cache Cleared', 'Application cache cleared successfully.');
+            $this->showNotification(__('Cache Cleared'), __('Application cache cleared successfully.'));
         } catch (Exception $exception) {
-            $this->showNotification('Cache Clear Failed', 'Failed to clear cache: ' . $exception->getMessage());
+            $this->showNotification(__('Cache Clear Failed'), __('Failed to clear cache: :message', ['message' => $exception->getMessage()]));
         }
     }
 
@@ -140,10 +140,10 @@ class DesktopServiceProvider extends ServiceProvider
     {
         try {
             // Implementation for checking updates
-            $this->showNotification('Update Check', 'Checking for updates...');
+            $this->showNotification(__('Update Check'), __('Checking for updates...'));
             // This would typically involve calling an update service
         } catch (Exception $exception) {
-            $this->showNotification('Update Check Failed', 'Failed to check for updates: ' . $exception->getMessage());
+            $this->showNotification(__('Update Check Failed'), __('Failed to check for updates: :message', ['message' => $exception->getMessage()]));
         }
     }
 

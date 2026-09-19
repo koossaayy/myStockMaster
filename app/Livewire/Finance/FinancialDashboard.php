@@ -190,7 +190,7 @@ class FinancialDashboard extends Component
             $calculateGrossMarginAction = new CalculateGrossMarginAction;
             $this->grossMarginData = $calculateGrossMarginAction($dateFrom, $dateTo);
         } catch (Exception $exception) {
-            session()->flash('error', 'Failed to load financial data: ' . $exception->getMessage());
+            session()->flash('error', __('Failed to load financial data: :message', ['message' => $exception->getMessage()]));
         }
     }
 
@@ -290,7 +290,7 @@ class FinancialDashboard extends Component
                 'Content-Type' => 'application/json',
             ]);
         } catch (Exception $exception) {
-            session()->flash('error', 'Failed to export financial report: ' . $exception->getMessage());
+            session()->flash('error', __('Failed to export financial report: :message', ['message' => $exception->getMessage()]));
         }
     }
 
@@ -320,19 +320,19 @@ class FinancialDashboard extends Component
             'labels' => $labels,
             'datasets' => [
                 [
-                    'label' => 'Revenue',
+                    'label' => __('Revenue'),
                     'data' => $revenues,
                     'borderColor' => 'rgb(34, 197, 94)',
                     'backgroundColor' => 'rgba(34, 197, 94, 0.1)',
                 ],
                 [
-                    'label' => 'Expenses',
+                    'label' => __('Expenses'),
                     'data' => $expenses,
                     'borderColor' => 'rgb(239, 68, 68)',
                     'backgroundColor' => 'rgba(239, 68, 68, 0.1)',
                 ],
                 [
-                    'label' => 'Net Profit',
+                    'label' => __('Net Profit'),
                     'data' => $profits,
                     'borderColor' => 'rgb(59, 130, 246)',
                     'backgroundColor' => 'rgba(59, 130, 246, 0.1)',

@@ -39,7 +39,7 @@ class MenuBuilder
                 Menu::fullscreen(),
                 Menu::reload(),
                 Menu::devTools()
-            )->label('View'),
+            )->label(__('View')),
 
             Menu::make(
                 // Menu::route('settings.index', 'Settings', 'CmdOrCtrl+,'),
@@ -47,12 +47,12 @@ class MenuBuilder
                 Menu::label('Toggle Offline Mode')->event('native.toggle.offline'),
                 Menu::separator(),
                 Menu::label('Clear Cache')->event('native.cache.clear')
-            )->label('Tools'),
+            )->label(__('Tools')),
 
             Menu::make(
-                Menu::about('About MyStockMaster'),
+                Menu::about(__('About MyStockMaster')),
                 Menu::label('Check for Updates')->event('native.check.updates')
-            )->label('Help'),
+            )->label(__('Help')),
         ];
     }
 }

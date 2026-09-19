@@ -92,7 +92,7 @@ class DesktopErrorHandler
 
         $processedError = [
             'id' => $errorId,
-            'message' => $errorData['message'] ?? 'Unknown JavaScript error',
+            'message' => $errorData['message'] ?? __('Unknown JavaScript error'),
             'source' => $errorData['source'] ?? 'unknown',
             'line' => $errorData['line'] ?? 0,
             'column' => $errorData['column'] ?? 0,
@@ -189,7 +189,7 @@ class DesktopErrorHandler
             $categoryCount[$category] = ($categoryCount[$category] ?? 0) + 1;
 
             // Count by message for most frequent
-            $message = $error['message'] ?? 'Unknown error';
+            $message = $error['message'] ?? __('Unknown error');
             $messageCount[$message] = ($messageCount[$message] ?? 0) + 1;
 
             // Most recent
@@ -307,7 +307,7 @@ class DesktopErrorHandler
             default => 'error'
         };
 
-        Log::channel('desktop')->{$logLevel}('Desktop Application Error', $errorData);
+        Log::channel('desktop')->{$logLevel}(__('Desktop Application Error'), $errorData);
     }
 
     /** Store error for desktop app retrieval */

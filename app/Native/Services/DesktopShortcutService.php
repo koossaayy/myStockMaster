@@ -58,7 +58,7 @@ class DesktopShortcutService
             return [
                 'success' => false,
                 'action' => null,
-                'message' => 'Desktop shortcuts only available in desktop mode',
+                'message' => __('Desktop shortcuts only available in desktop mode'),
             ];
         }
 
@@ -68,7 +68,7 @@ class DesktopShortcutService
             return [
                 'success' => false,
                 'action' => null,
-                'message' => 'Unknown shortcut: ' . $shortcut,
+                'message' => __('Unknown shortcut: :shortcut', ['shortcut' => $shortcut]),
             ];
         }
 
@@ -84,7 +84,7 @@ class DesktopShortcutService
             return [
                 'success' => false,
                 'action' => $action,
-                'message' => 'Failed to execute shortcut: ' . $exception->getMessage(),
+                'message' => __('Failed to execute shortcut: :message', ['message' => $exception->getMessage()]),
             ];
         }
     }
@@ -94,40 +94,40 @@ class DesktopShortcutService
     {
         return [
             'Navigation' => [
-                'ctrl+d' => 'Toggle Developer Tools',
-                'ctrl+shift+d' => 'Toggle Developer Tools',
-                'ctrl+r' => 'Refresh Page',
-                'f5' => 'Refresh Page',
-                'ctrl+shift+r' => 'Hard Refresh (Clear Cache)',
-                'f11' => 'Toggle Fullscreen',
-                'alt+f4' => 'Close Window',
-                'ctrl+m' => 'Minimize Window',
-                'ctrl+shift+m' => 'Maximize Window',
+                'ctrl+d' => __('Toggle Developer Tools'),
+                'ctrl+shift+d' => __('Toggle Developer Tools'),
+                'ctrl+r' => __('Refresh Page'),
+                'f5' => __('Refresh Page'),
+                'ctrl+shift+r' => __('Hard Refresh (Clear Cache)'),
+                'f11' => __('Toggle Fullscreen'),
+                'alt+f4' => __('Close Window'),
+                'ctrl+m' => __('Minimize Window'),
+                'ctrl+shift+m' => __('Maximize Window'),
             ],
             'Application' => [
-                'ctrl+shift+s' => 'Sync Data',
-                'ctrl+shift+o' => 'Toggle Offline Mode',
-                'ctrl+shift+n' => 'Show Notifications',
-                'ctrl+shift+c' => 'Clear Cache',
-                'ctrl+shift+l' => 'Show Logs',
+                'ctrl+shift+s' => __('Sync Data'),
+                'ctrl+shift+o' => __('Toggle Offline Mode'),
+                'ctrl+shift+n' => __('Show Notifications'),
+                'ctrl+shift+c' => __('Clear Cache'),
+                'ctrl+shift+l' => __('Show Logs'),
             ],
             'POS & Inventory' => [
-                'ctrl+shift+p' => 'Open POS',
-                'ctrl+shift+i' => 'Add Product',
-                'ctrl+n' => 'New Sale',
-                'ctrl+shift+q' => 'New Quotation',
-                'ctrl+shift+b' => 'Show Barcode Generator',
+                'ctrl+shift+p' => __('Open POS'),
+                'ctrl+shift+i' => __('Add Product'),
+                'ctrl+n' => __('New Sale'),
+                'ctrl+shift+q' => __('New Quotation'),
+                'ctrl+shift+b' => __('Show Barcode Generator'),
             ],
             'Management' => [
-                'ctrl+shift+u' => 'Show Users',
-                'ctrl+shift+w' => 'Show Warehouses',
-                'ctrl+shift+e' => 'Export Data',
+                'ctrl+shift+u' => __('Show Users'),
+                'ctrl+shift+w' => __('Show Warehouses'),
+                'ctrl+shift+e' => __('Export Data'),
             ],
             'System' => [
-                'ctrl+shift+?' => 'Show Help',
-                'ctrl+shift+a' => 'Show About',
-                'ctrl+shift+u' => 'Check for Updates',
-                'escape' => 'Close Modal/Dialog',
+                'ctrl+shift+?' => __('Show Help'),
+                'ctrl+shift+a' => __('Show About'),
+                'ctrl+shift+u' => __('Check for Updates'),
+                'escape' => __('Close Modal/Dialog'),
             ],
         ];
     }
@@ -135,39 +135,39 @@ class DesktopShortcutService
     // Window management actions
     protected function toggleDevTools(): array
     {
-        return ['success' => true, 'action' => 'toggleDevTools', 'message' => 'Developer tools toggled'];
+        return ['success' => true, 'action' => 'toggleDevTools', 'message' => __('Developer tools toggled')];
     }
 
     protected function refreshPage(): array
     {
-        return ['success' => true, 'action' => 'refresh', 'message' => 'Page refreshed'];
+        return ['success' => true, 'action' => 'refresh', 'message' => __('Page refreshed')];
     }
 
     protected function hardRefresh(): array
     {
         Cache::flush();
 
-        return ['success' => true, 'action' => 'hardRefresh', 'message' => 'Hard refresh completed'];
+        return ['success' => true, 'action' => 'hardRefresh', 'message' => __('Hard refresh completed')];
     }
 
     protected function toggleFullscreen(): array
     {
-        return ['success' => true, 'action' => 'toggleFullscreen', 'message' => 'Fullscreen toggled'];
+        return ['success' => true, 'action' => 'toggleFullscreen', 'message' => __('Fullscreen toggled')];
     }
 
     protected function closeWindow(): array
     {
-        return ['success' => true, 'action' => 'closeWindow', 'message' => 'Closing window'];
+        return ['success' => true, 'action' => 'closeWindow', 'message' => __('Closing window')];
     }
 
     protected function minimizeWindow(): array
     {
-        return ['success' => true, 'action' => 'minimizeWindow', 'message' => 'Window minimized'];
+        return ['success' => true, 'action' => 'minimizeWindow', 'message' => __('Window minimized')];
     }
 
     protected function maximizeWindow(): array
     {
-        return ['success' => true, 'action' => 'maximizeWindow', 'message' => 'Window maximized'];
+        return ['success' => true, 'action' => 'maximizeWindow', 'message' => __('Window maximized')];
     }
 
     // Application actions
@@ -177,7 +177,7 @@ class DesktopShortcutService
             $syncService = resolve(DatabaseSyncService::class);
 
             if (! $syncService->isOnlineAvailable()) {
-                return ['success' => false, 'message' => 'Cannot sync: No internet connection'];
+                return ['success' => false, 'message' => __('Cannot sync: No internet connection')];
             }
 
             $toOfflineResult = $syncService->syncToOffline();
@@ -186,14 +186,14 @@ class DesktopShortcutService
             return [
                 'success' => $toOfflineResult && $toOnlineResult,
                 'action' => 'syncData',
-                'message' => 'Data synchronization completed',
+                'message' => __('Data synchronization completed'),
                 'data' => [
                     'to_offline' => $toOfflineResult,
                     'to_online' => $toOnlineResult,
                 ],
             ];
         } catch (Exception $exception) {
-            return ['success' => false, 'message' => 'Sync failed: ' . $exception->getMessage()];
+            return ['success' => false, 'message' => __('Sync failed: :message', ['message' => $exception->getMessage()])];
         }
     }
 
@@ -207,14 +207,14 @@ class DesktopShortcutService
         return [
             'success' => true,
             'action' => 'toggleOfflineMode',
-            'message' => $newMode ? 'Switched to offline mode' : 'Switched to online mode',
+            'message' => $newMode ? __('Switched to offline mode') : __('Switched to online mode'),
             'offline_mode' => $newMode,
         ];
     }
 
     protected function showNotifications(): array
     {
-        return ['success' => true, 'action' => 'showNotifications', 'message' => 'Notifications panel opened'];
+        return ['success' => true, 'action' => 'showNotifications', 'message' => __('Notifications panel opened')];
     }
 
     protected function clearCache(): array
@@ -225,78 +225,78 @@ class DesktopShortcutService
             Artisan::call('view:clear');
             Artisan::call('route:clear');
 
-            return ['success' => true, 'action' => 'clearCache', 'message' => 'All caches cleared successfully'];
+            return ['success' => true, 'action' => 'clearCache', 'message' => __('All caches cleared successfully')];
         } catch (Exception $exception) {
-            return ['success' => false, 'message' => 'Failed to clear cache: ' . $exception->getMessage()];
+            return ['success' => false, 'message' => __('Failed to clear cache: :message', ['message' => $exception->getMessage()])];
         }
     }
 
     protected function showLogs(): array
     {
-        return ['success' => true, 'action' => 'navigate', 'url' => '/admin/logs', 'message' => 'Opening logs'];
+        return ['success' => true, 'action' => 'navigate', 'url' => '/admin/logs', 'message' => __('Opening logs')];
     }
 
     // Navigation actions
     protected function openPOS(): array
     {
-        return ['success' => true, 'action' => 'navigate', 'url' => '/pos', 'message' => 'Opening POS'];
+        return ['success' => true, 'action' => 'navigate', 'url' => '/pos', 'message' => __('Opening POS')];
     }
 
     protected function addProduct(): array
     {
-        return ['success' => true, 'action' => 'navigate', 'url' => '/admin/products/create', 'message' => 'Opening product creation'];
+        return ['success' => true, 'action' => 'navigate', 'url' => '/admin/products/create', 'message' => __('Opening product creation')];
     }
 
     protected function showUsers(): array
     {
-        return ['success' => true, 'action' => 'navigate', 'url' => '/admin/users', 'message' => 'Opening users management'];
+        return ['success' => true, 'action' => 'navigate', 'url' => '/admin/users', 'message' => __('Opening users management')];
     }
 
     protected function showWarehouses(): array
     {
-        return ['success' => true, 'action' => 'navigate', 'url' => '/admin/warehouses', 'message' => 'Opening warehouses'];
+        return ['success' => true, 'action' => 'navigate', 'url' => '/admin/warehouses', 'message' => __('Opening warehouses')];
     }
 
     // Quick actions
     protected function newSale(): array
     {
-        return ['success' => true, 'action' => 'navigate', 'url' => '/admin/sales/create', 'message' => 'Creating new sale'];
+        return ['success' => true, 'action' => 'navigate', 'url' => '/admin/sales/create', 'message' => __('Creating new sale')];
     }
 
     protected function newQuotation(): array
     {
-        return ['success' => true, 'action' => 'navigate', 'url' => '/admin/quotations/create', 'message' => 'Creating new quotation'];
+        return ['success' => true, 'action' => 'navigate', 'url' => '/admin/quotations/create', 'message' => __('Creating new quotation')];
     }
 
     protected function showBarcode(): array
     {
-        return ['success' => true, 'action' => 'navigate', 'url' => '/admin/barcodes', 'message' => 'Opening barcode generator'];
+        return ['success' => true, 'action' => 'navigate', 'url' => '/admin/barcodes', 'message' => __('Opening barcode generator')];
     }
 
     protected function exportData(): array
     {
-        return ['success' => true, 'action' => 'showModal', 'modal' => 'export-data', 'message' => 'Opening export dialog'];
+        return ['success' => true, 'action' => 'showModal', 'modal' => 'export-data', 'message' => __('Opening export dialog')];
     }
 
     // System actions
     protected function showHelp(): array
     {
-        return ['success' => true, 'action' => 'showModal', 'modal' => 'help', 'message' => 'Opening help'];
+        return ['success' => true, 'action' => 'showModal', 'modal' => 'help', 'message' => __('Opening help')];
     }
 
     protected function showAbout(): array
     {
-        return ['success' => true, 'action' => 'showModal', 'modal' => 'about', 'message' => 'Opening about dialog'];
+        return ['success' => true, 'action' => 'showModal', 'modal' => 'about', 'message' => __('Opening about dialog')];
     }
 
     protected function checkUpdates(): array
     {
-        return ['success' => true, 'action' => 'checkUpdates', 'message' => 'Checking for updates'];
+        return ['success' => true, 'action' => 'checkUpdates', 'message' => __('Checking for updates')];
     }
 
     protected function closeModal(): array
     {
-        return ['success' => true, 'action' => 'closeModal', 'message' => 'Modal closed'];
+        return ['success' => true, 'action' => 'closeModal', 'message' => __('Modal closed')];
     }
 
     /** Register shortcuts with the desktop environment */

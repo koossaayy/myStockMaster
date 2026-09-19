@@ -13,7 +13,7 @@ class ReturnSaleNotification extends BaseSystemNotification
 
     public function __construct(SaleReturn $saleReturn, string $channelType = 'mail')
     {
-        parent::__construct('Sale Return Details - ' . $saleReturn->reference, $channelType);
+        parent::__construct(__('Sale Return Details - :reference', ['reference' => $saleReturn->reference]), $channelType);
         $this->saleReturn = $saleReturn;
     }
 

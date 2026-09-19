@@ -43,7 +43,7 @@
                                         <x-table.td>
                                             <input type="number"
                                                 wire:change="setThreshold({{ $item->id }}, $event.target.value)"
-                                                value="{{ $item->stock_alert }}" placeholder="New Threshold"
+                                                value="{{ $item->stock_alert }}" placeholder="{{ __('New Threshold') }}"
                                                 class="form-input rounded-md shadow-sm mt-1 block w-full sm:w-32">
                                         </x-table.td>
                                     </x-table.tr>

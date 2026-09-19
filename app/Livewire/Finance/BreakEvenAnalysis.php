@@ -138,7 +138,7 @@ class BreakEvenAnalysis extends Component
                     break;
             }
         } catch (Exception $exception) {
-            session()->flash('error', 'Failed to load break-even analysis: ' . $exception->getMessage());
+            session()->flash('error', __('Failed to load break-even analysis: :message', ['message' => $exception->getMessage()]));
         }
     }
 
@@ -312,7 +312,7 @@ class BreakEvenAnalysis extends Component
 
             return response()->streamDownload(function (): void {
                 $file = fopen('php://output', 'w');
-                fputcsv($file, ['Metric', 'Value']);
+                fputcsv($file, [__('Metric'), __('Value')]);
 
                 $generator = function () {
                     foreach ($this->breakEvenData as $key => $value) {
@@ -330,7 +330,7 @@ class BreakEvenAnalysis extends Component
             }, $filename, $headers);
 
         } catch (Exception $exception) {
-            session()->flash('error', 'Error exporting data: ' . $exception->getMessage());
+            session()->flash('error', __('Error exporting data: :message', ['message' => $exception->getMessage()]));
 
             return;
         }
@@ -367,19 +367,19 @@ class BreakEvenAnalysis extends Component
             'labels' => $labels,
             'datasets' => [
                 [
-                    'label' => 'Revenue',
+                    'label' => __('Revenue'),
                     'data' => $revenuePoints,
                     'borderColor' => 'rgb(34, 197, 94)',
                     'backgroundColor' => 'rgba(34, 197, 94, 0.1)',
                 ],
                 [
-                    'label' => 'Total Costs',
+                    'label' => __('Total Costs'),
                     'data' => $totalCostPoints,
                     'borderColor' => 'rgb(239, 68, 68)',
                     'backgroundColor' => 'rgba(239, 68, 68, 0.1)',
                 ],
                 [
-                    'label' => 'Fixed Costs',
+                    'label' => __('Fixed Costs'),
                     'data' => $fixedCostPoints,
                     'borderColor' => 'rgb(156, 163, 175)',
                     'backgroundColor' => 'rgba(156, 163, 175, 0.1)',
@@ -395,10 +395,10 @@ class BreakEvenAnalysis extends Component
         $scenarioBreakEven = $this->scenarioAnalysis['adjusted_break_even_revenue'] ?? 0;
 
         return [
-            'labels' => ['Base Scenario', 'Adjusted Scenario'],
+            'labels' => [__('Base Scenario'), __('Adjusted Scenario')],
             'datasets' => [
                 [
-                    'label' => 'Break-Even Revenue',
+                    'label' => __('Break-Even Revenue'),
                     'data' => [$baseBreakEven, $scenarioBreakEven],
                     'backgroundColor' => ['rgba(59, 130, 246, 0.8)', 'rgba(16, 185, 129, 0.8)'],
                 ],

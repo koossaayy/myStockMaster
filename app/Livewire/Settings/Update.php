@@ -23,9 +23,9 @@ class Update extends Component
 
         if ($updatesAvailable) {
             $this->updateAvailable = true;
-            $this->message = 'Updates available on origin/' . config('app.git_branch', 'master') . '.';
+            $this->message = __('Updates available on origin/:config.', ['config' => config('app.git_branch', 'master')]);
         } else {
-            $this->message = 'No updates available.';
+            $this->message = __('No updates available.');
         }
     }
 

@@ -5,8 +5,8 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
             </svg>
         </div>
-        <h3 class="text-2xl font-bold text-orange-900 font-display">Who are you?</h3>
-        <p class="mt-2 text-orange-600">Select the persona that best describes your technical background.</p>
+        <h3 class="text-2xl font-bold text-orange-900 font-display">{{ __('Who are you?') }}</h3>
+        <p class="mt-2 text-orange-600">{{ __('Select the persona that best describes your technical background.') }}</p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -16,14 +16,13 @@
             <div class="w-16 h-16 bg-orange-100 group-hover:bg-orange-200 rounded-full flex items-center justify-center mb-6 transition-colors duration-200">
                 <span class="text-3xl">🛒</span>
             </div>
-            <h4 class="text-xl font-bold text-orange-900 mb-2">Retail / One-Click</h4>
+            <h4 class="text-xl font-bold text-orange-900 mb-2">{{ __('Retail / One-Click') }}</h4>
             <p class="text-sm text-orange-600 text-center">
-                Non-technical user. Wants a working app quickly with minimal configuration.
-                Uses SQLite and default settings.
+                {{ __('Non-technical user. Wants a working app quickly with minimal configuration. Uses SQLite and default settings.') }}
             </p>
             @if($isDesktop)
                 <div class="mt-4 px-3 py-1 bg-green-100 text-green-700 text-xs font-bold rounded-full">
-                    Recommended for Desktop
+                    {{ __('Recommended for Desktop') }}
                 </div>
             @endif
         </button>
@@ -34,14 +33,13 @@
             <div class="w-16 h-16 bg-orange-100 group-hover:bg-orange-200 rounded-full flex items-center justify-center mb-6 transition-colors duration-200">
                 <span class="text-3xl">🛠️</span>
             </div>
-            <h4 class="text-xl font-bold text-orange-900 mb-2">Technician / Expert</h4>
+            <h4 class="text-xl font-bold text-orange-900 mb-2">{{ __('Technician / Expert') }}</h4>
             <p class="text-sm text-orange-600 text-center">
-                Technical user / IT staff. Full control over database (MySQL/PostgreSQL),
-                server requirements, and advanced configuration.
+                {{ __('Technical user / IT staff. Full control over database (MySQL/PostgreSQL), server requirements, and advanced configuration.') }}
             </p>
             @if(!$isDesktop)
                 <div class="mt-4 px-3 py-1 bg-blue-100 text-blue-700 text-xs font-bold rounded-full">
-                    Recommended for Web/Server
+                    {{ __('Recommended for Web/Server') }}
                 </div>
             @endif
         </button>

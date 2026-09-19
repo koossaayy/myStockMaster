@@ -6,7 +6,7 @@
             lastKeystrokeTime: 0,
             handleKeydown(e) {
                 // Ignore if focus is in an input, textarea, or select
-                if (['INPUT', 'TEXTAREA', 'SELECT'].includes(e.target.tagName)) return;
+                if (['{{ __('INPUT') }}', '{{ __('TEXTAREA') }}', '{{ __('SELECT') }}'].includes(e.target.tagName)) return;
 
                 const currentTime = new Date().getTime();
                 
@@ -15,7 +15,7 @@
                     this.barcodeBuffer = '';
                 }
 
-                if (e.key === 'Enter') {
+                if (e.key === '{{ __('Enter') }}') {
                     if (this.barcodeBuffer.length >= 4) {
                         $wire.dispatch('barcodeScanned', { barcode: this.barcodeBuffer });
                         this.barcodeBuffer = '';
@@ -220,7 +220,7 @@
             function initQuaggaJS() {
                 Quagga.init({
                     inputStream: {
-                        name: "Live",
+                        name: @json(__("Live")),
                         type: "LiveStream",
                         target: document.querySelector('#scanner-container')
                     },

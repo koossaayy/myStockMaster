@@ -45,7 +45,7 @@
                             <div class="col-auto">
                                 <p class="invoice-number mb-2 pb-1"><b>{{ __('Reference No') }}:
                                     </b>{{ $data->reference }}</p>
-                                <p class="invoice-date"><b>Date: </b>{{ $data->date }} </p>
+                                <p class="invoice-date"><b>{{ __('Date:') }} </b>{{ $data->date }} </p>
                             </div>
                         </div>
                         <table class="invoice-table td-big table-stripe-column">

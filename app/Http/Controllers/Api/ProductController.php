@@ -69,7 +69,7 @@ class ProductController extends Controller
         $product = Product::query()->find($id);
 
         if (is_null($product)) {
-            return new \Illuminate\Http\JsonResponse(['message' => 'Product not found'], 404);
+            return new \Illuminate\Http\JsonResponse(['message' => __('Product not found')], 404);
         }
 
         return new ProductResource($product);
@@ -94,6 +94,6 @@ class ProductController extends Controller
         $product = Product::query()->findOrFail($id);
         $product->delete();
 
-        return new \Illuminate\Http\JsonResponse(['message' => 'Product deleted successfully']);
+        return new \Illuminate\Http\JsonResponse(['message' => __('Product deleted successfully')]);
     }
 }

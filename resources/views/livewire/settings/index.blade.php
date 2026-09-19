@@ -189,14 +189,14 @@
                                         <x-select name="default_date_format" wire:model="form.default_date_format"
                                             class="block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md mt-1"
                                             required>
-                                            <option value="d-m-Y">DD-MM-YYYY</option>
-                                            <option value="d/m/Y">DD/MM/YYYY</option>
+                                            <option value="d-m-Y">{{ __('DD-MM-YYYY') }}</option>
+                                            <option value="d/m/Y">{{ __('DD/MM/YYYY') }}</option>
                                             <option value="d.m.Y">DD.MM.YYYY</option>
-                                            <option value="m-d-Y">MM-DD-YYYY</option>
-                                            <option value="m/d/Y">MM/DD/YYYY</option>
+                                            <option value="m-d-Y">{{ __('MM-DD-YYYY') }}</option>
+                                            <option value="m/d/Y">{{ __('MM/DD/YYYY') }}</option>
                                             <option value="m.d.Y">MM.DD.YYYY</option>
-                                            <option value="Y-m-d">YYYY-MM-DD</option>
-                                            <option value="Y/m/d">YYYY/MM/DD</option>
+                                            <option value="Y-m-d">{{ __('YYYY-MM-DD') }}</option>
+                                            <option value="Y/m/d">{{ __('YYYY/MM/DD') }}</option>
                                             <option value="Y.m.d">YYYY.MM.DD</option>
                                         </x-select>
                                     </div>
@@ -309,8 +309,7 @@
                                                         name="invoice_template"
                                                         class="block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md mt-1">
                                                         @for ($i = 1; $i <= 5; $i++)
-                                                            <option value="invoice-{{ $i }}">Invoice
-                                                            {{ $i }}
+                                                            <option value="invoice-{{ $i }}">{{ __('Invoice :param_1', ['param_1' => $i]) }}
                                                             </option>
                                                             @endfor
                                                     </x-select>
@@ -319,7 +318,7 @@
                                                     <label
                                                         class="block text-sm font-medium text-gray-700 mb-2">{{ __('Preview') }}</label>
                                                     <img src="{{ asset('assets/screens/' . $form->invoice_template . '.png') }}"
-                                                        alt="Invoice Preview"
+                                                        alt="{{ __('Invoice Preview') }}"
                                                         class="w-full h-auto rounded-lg border border-gray-200">
                                                 </div>
                                             </div>
@@ -333,11 +332,11 @@
                                                     <div wire:loading wire:target="invoice_header" class="mt-2 text-sm text-gray-500">{{ __('Uploading...') }}</div>
                                                     @if ($invoice_header)
                                                         <div class="mt-2">
-                                                            <img src="{{ $invoice_header->temporaryUrl() }}" class="w-full h-auto rounded border" alt="Header Preview">
+                                                            <img src="{{ $invoice_header->temporaryUrl() }}" class="w-full h-auto rounded border" alt="{{ __('Header Preview') }}">
                                                         </div>
                                                     @elseif (settings('invoice_header'))
                                                         <div class="mt-2">
-                                                            <img src="{{ asset('storage/settings/'.settings('invoice_header')) }}" class="w-full h-auto rounded border" alt="Header Preview">
+                                                            <img src="{{ asset('storage/settings/'.settings('invoice_header')) }}" class="w-full h-auto rounded border" alt="{{ __('Header Preview') }}">
                                                         </div>
                                                     @endif
                                                 </div>
@@ -347,11 +346,11 @@
                                                     <div wire:loading wire:target="invoice_footer" class="mt-2 text-sm text-gray-500">{{ __('Uploading...') }}</div>
                                                     @if ($invoice_footer)
                                                         <div class="mt-2">
-                                                            <img src="{{ $invoice_footer->temporaryUrl() }}" class="w-full h-auto rounded border" alt="Footer Preview">
+                                                            <img src="{{ $invoice_footer->temporaryUrl() }}" class="w-full h-auto rounded border" alt="{{ __('Footer Preview') }}">
                                                         </div>
                                                     @elseif (settings('invoice_footer'))
                                                         <div class="mt-2">
-                                                            <img src="{{ asset('storage/settings/'.settings('invoice_footer')) }}" class="w-full h-auto rounded border" alt="Footer Preview">
+                                                            <img src="{{ asset('storage/settings/'.settings('invoice_footer')) }}" class="w-full h-auto rounded border" alt="{{ __('Footer Preview') }}">
                                                         </div>
                                                     @endif
                                                 </div>

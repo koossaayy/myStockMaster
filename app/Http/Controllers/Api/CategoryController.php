@@ -64,7 +64,7 @@ class CategoryController extends Controller
         $category = Category::query()->find($id);
 
         if (is_null($category)) {
-            return new \Illuminate\Http\JsonResponse(['message' => 'Category not found'], 404);
+            return new \Illuminate\Http\JsonResponse(['message' => __('Category not found')], 404);
         }
 
         return new CategoryResource($category);
@@ -89,6 +89,6 @@ class CategoryController extends Controller
         $category = Category::query()->findOrFail($id);
         $category->delete();
 
-        return new \Illuminate\Http\JsonResponse(['message' => 'Category deleted successfully']);
+        return new \Illuminate\Http\JsonResponse(['message' => __('Category deleted successfully')]);
     }
 }

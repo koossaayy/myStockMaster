@@ -42,12 +42,12 @@
                 <div class="md:w-1/3 sm:w-full px-3 mb-4">
                     <x-label for="barcode_symbology" :value="__('Barcode Symbology')" />
                     <x-select wire:model="form.barcode_symbology" name="barcode_symbology" required>
-                        <option value="C128">Code 128</option>
-                        <option value="C39">Code 39</option>
-                        <option value="UPCA">UPC-A</option>
-                        <option value="UPCE">UPC-E</option>
-                        <option value="EAN13">EAN-13</option>
-                        <option value="EAN8">EAN-8</option>
+                        <option value="C128">{{ __('Code 128') }}</option>
+                        <option value="C39">{{ __('Code 39') }}</option>
+                        <option value="UPCA">{{ __('UPC-A') }}</option>
+                        <option value="UPCE">{{ __('UPC-E') }}</option>
+                        <option value="EAN13">{{ __('EAN-13') }}</option>
+                        <option value="EAN8">{{ __('EAN-8') }}</option>
                     </x-select>
                     <x-input-error :messages="$errors->get('form.barcode_symbology')" for="form.barcode_symbology" class="mt-2" />
                 </div>

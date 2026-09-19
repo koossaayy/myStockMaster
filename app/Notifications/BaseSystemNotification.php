@@ -44,9 +44,9 @@ class BaseSystemNotification extends Notification implements ShouldQueue
     {
         return (new MailMessage)
             ->subject($this->subjectTitle)
-            ->line('The introduction to the notification.')
-            ->action('Notification Action', url('/'))
-            ->line('Thank you for using our application!');
+            ->line(__('The introduction to the notification.'))
+            ->action(__('Notification Action'), url('/'))
+            ->line(__('Thank you for using our application!'));
     }
 
     /**

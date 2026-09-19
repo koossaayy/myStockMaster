@@ -174,9 +174,9 @@ class CalculateExpansionReadinessAction
             $recommendations[] = [
                 'type' => 'expansion_ready',
                 'priority' => 'high',
-                'title' => 'High Table Utilization Detected',
-                'description' => 'Your table utilization is above 85%, indicating strong demand for expansion.',
-                'action' => 'Consider expanding seating capacity or opening a second location.',
+                'title' => __('High Table Utilization Detected'),
+                'description' => __('Your table utilization is above 85%, indicating strong demand for expansion.'),
+                'action' => __('Consider expanding seating capacity or opening a second location.'),
             ];
         }
 
@@ -185,9 +185,9 @@ class CalculateExpansionReadinessAction
             $recommendations[] = [
                 'type' => 'financial_ready',
                 'priority' => 'high',
-                'title' => 'Strong Profit Margins',
-                'description' => 'Your profit margin of ' . $profitabilityMetrics['profit_margin'] . '% indicates financial readiness for expansion.',
-                'action' => 'Leverage strong profitability to fund expansion initiatives.',
+                'title' => __('Strong Profit Margins'),
+                'description' => __('Your profit margin of :profit_margin% indicates financial readiness for expansion.', ['profit_margin' => $profitabilityMetrics['profit_margin']]),
+                'action' => __('Leverage strong profitability to fund expansion initiatives.'),
             ];
         }
 
@@ -196,9 +196,9 @@ class CalculateExpansionReadinessAction
             $recommendations[] = [
                 'type' => 'growth_momentum',
                 'priority' => 'medium',
-                'title' => 'Strong Revenue Growth',
-                'description' => 'Revenue growth of ' . $profitabilityMetrics['revenue_growth_rate'] . '% shows positive market momentum.',
-                'action' => 'Capitalize on growth momentum with strategic expansion.',
+                'title' => __('Strong Revenue Growth'),
+                'description' => __('Revenue growth of :revenue_growth_rate% shows positive market momentum.', ['revenue_growth_rate' => $profitabilityMetrics['revenue_growth_rate']]),
+                'action' => __('Capitalize on growth momentum with strategic expansion.'),
             ];
         }
 
@@ -207,9 +207,9 @@ class CalculateExpansionReadinessAction
             $recommendations[] = [
                 'type' => 'improvement_needed',
                 'priority' => 'high',
-                'title' => 'Expansion Readiness Below Threshold',
-                'description' => 'Current readiness score of ' . $readinessScore['total_score'] . ' indicates areas for improvement.',
-                'action' => 'Focus on improving weak areas before considering expansion.',
+                'title' => __('Expansion Readiness Below Threshold'),
+                'description' => __('Current readiness score of :total_score indicates areas for improvement.', ['total_score' => $readinessScore['total_score']]),
+                'action' => __('Focus on improving weak areas before considering expansion.'),
             ];
         }
 
@@ -226,9 +226,9 @@ class CalculateExpansionReadinessAction
             $risks[] = [
                 'type' => 'financial',
                 'severity' => 'high',
-                'title' => 'Low Cash Runway',
-                'description' => 'Cash runway of ' . round($cashRunway, 1) . ' months is below recommended 6+ months.',
-                'mitigation' => 'Secure additional funding or improve cash flow before expansion.',
+                'title' => __('Low Cash Runway'),
+                'description' => __('Cash runway of :round months is below recommended 6+ months.', ['round' => round($cashRunway, 1)]),
+                'mitigation' => __('Secure additional funding or improve cash flow before expansion.'),
             ];
         }
 
@@ -238,9 +238,9 @@ class CalculateExpansionReadinessAction
             $risks[] = [
                 'type' => 'profitability',
                 'severity' => 'medium',
-                'title' => 'Low Profit Margins',
-                'description' => 'Profit margin of ' . round($profitMargin, 1) . '% may not support expansion costs.',
-                'mitigation' => 'Improve operational efficiency and cost management.',
+                'title' => __('Low Profit Margins'),
+                'description' => __('Profit margin of :round% may not support expansion costs.', ['round' => round($profitMargin, 1)]),
+                'mitigation' => __('Improve operational efficiency and cost management.'),
             ];
         }
 
@@ -250,9 +250,9 @@ class CalculateExpansionReadinessAction
             $risks[] = [
                 'type' => 'operational',
                 'severity' => 'medium',
-                'title' => 'Low Utilization Rate',
-                'description' => 'Table utilization of ' . round($utilizationRate, 1) . '% indicates underutilized capacity.',
-                'mitigation' => 'Focus on marketing and customer acquisition before expansion.',
+                'title' => __('Low Utilization Rate'),
+                'description' => __('Table utilization of :round% indicates underutilized capacity.', ['round' => round($utilizationRate, 1)]),
+                'mitigation' => __('Focus on marketing and customer acquisition before expansion.'),
             ];
         }
 
@@ -288,22 +288,22 @@ class CalculateExpansionReadinessAction
         return [
             'preparation_phase' => [
                 'duration' => '3-6 months',
-                'activities' => ['Site selection', 'Permits and licensing', 'Design and planning', 'Financing'],
+                'activities' => [__('Site selection'), __('Permits and licensing'), __('Design and planning'), __('Financing')],
                 'estimated_cost' => 25000,
             ],
             'construction_phase' => [
                 'duration' => '2-4 months',
-                'activities' => ['Renovation', 'Equipment installation', 'Staff hiring', 'Training'],
+                'activities' => [__('Renovation'), __('Equipment installation'), __('Staff hiring'), __('Training')],
                 'estimated_cost' => 275000,
             ],
             'launch_phase' => [
                 'duration' => '1-2 months',
-                'activities' => ['Soft opening', 'Marketing campaign', 'Operations optimization'],
+                'activities' => [__('Soft opening'), __('Marketing campaign'), __('Operations optimization')],
                 'estimated_cost' => 40000,
             ],
             'stabilization_phase' => [
                 'duration' => '6-12 months',
-                'activities' => ['Customer base building', 'Process refinement', 'Profitability achievement'],
+                'activities' => [__('Customer base building'), __('Process refinement'), __('Profitability achievement')],
                 'projected_revenue' => $currentMetrics['total_revenue'] * 0.7, // Conservative estimate
             ],
         ];
@@ -375,7 +375,7 @@ class CalculateExpansionReadinessAction
     private function getReadinessLevel(float $score): string
     {
         return match (true) {
-            $score >= 85 => 'excellent',
+            $score >= 85 => __('excellent'),
             $score >= 70 => 'good',
             $score >= 55 => 'fair',
             default => 'poor'
@@ -385,10 +385,10 @@ class CalculateExpansionReadinessAction
     private function getOverallRecommendation(float $score): string
     {
         return match (true) {
-            $score >= 85 => 'Highly recommended for expansion. All metrics indicate strong readiness.',
-            $score >= 70 => 'Recommended for expansion with minor improvements in weak areas.',
-            $score >= 55 => 'Consider expansion after addressing key improvement areas.',
-            default => 'Not recommended for expansion. Focus on improving current operations first.'
+            $score >= 85 => __('Highly recommended for expansion. All metrics indicate strong readiness.'),
+            $score >= 70 => __('Recommended for expansion with minor improvements in weak areas.'),
+            $score >= 55 => __('Consider expansion after addressing key improvement areas.'),
+            default => __('Not recommended for expansion. Focus on improving current operations first.')
         };
     }
 
@@ -446,7 +446,7 @@ class CalculateExpansionReadinessAction
         $peakHourSales = $this->getPeakHours($sales)['peak_sales'];
 
         if ($peakHourSales > $totalTables * 0.9) {
-            $bottlenecks[] = 'Table capacity during peak hours';
+            $bottlenecks[] = __('Table capacity during peak hours');
         }
 
         return $bottlenecks;
@@ -569,7 +569,7 @@ class CalculateExpansionReadinessAction
     private function assessCreditWorthiness(float|int $cashRunway, float $debtToEquity): string
     {
         if ($cashRunway >= 12 && $debtToEquity <= 0.3) {
-            return 'excellent';
+            return __('excellent');
         }
 
         if ($cashRunway >= 6 && $debtToEquity <= 0.5) {
@@ -671,8 +671,8 @@ class CalculateExpansionReadinessAction
     private function getLocationOpportunities(): array
     {
         return [
-            'high_potential_areas' => ['Downtown', 'Shopping District', 'Business Park'],
-            'demographic_match' => 'excellent',
+            'high_potential_areas' => [__('Downtown'), __('Shopping District'), __('Business Park')],
+            'demographic_match' => __('excellent'),
             'accessibility_score' => 85,
         ];
     }

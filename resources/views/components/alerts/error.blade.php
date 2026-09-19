@@ -7,7 +7,7 @@
         </div>
         <div class="ml-3">
             <h3 class="text-sm font-medium text-red-800">
-                There were {{ count($errors) }} {{ Str::plural('error') }} with your submission
+                {{ __('There were :param_1 :param_2 with your submission', ['param_1' => count($errors), 'param_2' => Str::plural('error')]) }}
             </h3>
             <div class="mt-2 text-sm text-red-700">
                 <ul role="list" class="list-disc pl-5 space-y-1 text-left">

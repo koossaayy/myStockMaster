@@ -59,7 +59,7 @@ class CustomerController extends Controller
         $customer = Customer::query()->find($id);
 
         if ($customer === null) {
-            return new \Illuminate\Http\JsonResponse(['message' => 'Customer not found'], 404);
+            return new \Illuminate\Http\JsonResponse(['message' => __('Customer not found')], 404);
         }
 
         return new CustomerResource($customer);
@@ -84,6 +84,6 @@ class CustomerController extends Controller
         $customer = Customer::query()->findOrFail($id);
         $customer->delete();
 
-        return new \Illuminate\Http\JsonResponse(['message' => 'Customer deleted successfully']);
+        return new \Illuminate\Http\JsonResponse(['message' => __('Customer deleted successfully')]);
     }
 }
