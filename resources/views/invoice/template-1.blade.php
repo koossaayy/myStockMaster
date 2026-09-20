@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Invoice {{ $data->reference ?? 'Preview' }}</title>
+    <title>{{ __('Invoice :param_1', ['param_1' => $data->reference ?? __('Preview')]) }}</title>
     <script src="https://cdn.tailwindcss.com"></script>
     @php
         $templateStyles = settings('template_styles', []);
@@ -39,30 +39,30 @@
 <body class="bg-white text-gray-900 p-8 max-w-4xl mx-auto font-sans">
     <!-- Action Buttons -->
     <div class="no-print flex justify-end mb-8 space-x-4">
-        <button onclick="window.print()" class="px-4 py-2 bg-theme-primary text-white rounded shadow hover:opacity-90">Print</button>
-        <a href="{{ url()->previous() }}" class="px-4 py-2 bg-gray-200 text-gray-800 rounded shadow hover:bg-gray-300">Back</a>
+        <button onclick="window.print()" class="px-4 py-2 bg-theme-primary text-white rounded shadow hover:opacity-90">{{ __('Print') }}</button>
+        <a href="{{ url()->previous() }}" class="px-4 py-2 bg-gray-200 text-gray-800 rounded shadow hover:bg-gray-300">{{ __('Back') }}</a>
     </div>
 
     <!-- Header -->
     @if(settings('invoice_header'))
     <div class="mb-6">
-        <img src="{{ asset('storage/settings/' . settings('invoice_header')) }}" alt="Invoice Header" class="w-full h-auto">
+        <img src="{{ asset('storage/settings/' . settings('invoice_header')) }}" alt="{{ __('Invoice Header') }}" class="w-full h-auto">
     </div>
     <div class="flex justify-between items-end mb-6">
         <div>
-            <h1 class="text-3xl font-bold uppercase tracking-widest text-gray-800">{{ $entity ?? 'INVOICE' }}</h1>
-            <p class="text-sm text-gray-500 font-semibold mt-1">Reference: {{ $data->reference ?? 'REF-XXXX' }}</p>
-            <p class="text-sm text-gray-500 mt-1">Date: {{ isset($data->date) ? \Carbon\Carbon::parse($data->date)->format(settings('default_date_format', 'Y-m-d')) : date('Y-m-d') }}</p>
+            <h1 class="text-3xl font-bold uppercase tracking-widest text-gray-800">{{ $entity ?? __('INVOICE') }}</h1>
+            <p class="text-sm text-gray-500 font-semibold mt-1">{{ __('Reference: :param_1', ['param_1' => $data->reference ?? __('REF-XXXX')]) }}</p>
+            <p class="text-sm text-gray-500 mt-1">{{ __('Date: :param_1', ['param_1' => isset($data->date) ? \Carbon\Carbon::parse($data->date)->format(settings('default_date_format', 'Y-m-d')) : date('Y-m-d')]) }}</p>
         </div>
     </div>
     @else
     <div class="flex justify-between items-start border-b-2 border-gray-800 pb-6 mb-6">
         <div>
             @if(settings('site_logo'))
-                <img src="{{ asset('images/' . settings('site_logo')) }}" alt="Logo" class="h-16 mb-2">
+                <img src="{{ asset('images/' . settings('site_logo')) }}" alt="{{ __('Logo') }}" class="h-16 mb-2">
             @endif
-            <h1 class="text-3xl font-bold uppercase tracking-widest text-gray-800">{{ $entity ?? 'INVOICE' }}</h1>
-            <p class="text-sm text-gray-500 font-semibold mt-1">Reference: {{ $data->reference ?? 'REF-XXXX' }}</p>
+            <h1 class="text-3xl font-bold uppercase tracking-widest text-gray-800">{{ $entity ?? __('INVOICE') }}</h1>
+            <p class="text-sm text-gray-500 font-semibold mt-1">Reference: {{ $data->reference ?? __('REF-XXXX') }}</p>
             <p class="text-sm text-gray-500 mt-1">Date: {{ isset($data->date) ? \Carbon\Carbon::parse($data->date)->format(settings('default_date_format', 'Y-m-d')) : date('Y-m-d') }}</p>
         </div>
         <div class="text-right">
@@ -74,7 +74,7 @@
                 <p class="text-sm text-gray-600 whitespace-pre-line">{{ settings('company_address') }}</p>
             @endif
             @if(settings('company_tax'))
-                <p class="text-sm text-gray-600">Tax ID: {{ settings('company_tax') }}</p>
+                <p class="text-sm text-gray-600">{{ __('Tax ID: :param_1', ['param_1' => settings('company_tax')]) }}</p>
             @endif
         </div>
     </div>
@@ -82,8 +82,8 @@
 
     <!-- Customer Details -->
     <div class="mb-8">
-        <h3 class="font-bold border-b border-gray-300 inline-block mb-2 text-gray-700">Bill To:</h3>
-        <p class="font-bold text-lg text-gray-800">{{ $data->customer->name ?? $data->supplier->name ?? 'Customer Name' }}</p>
+        <h3 class="font-bold border-b border-gray-300 inline-block mb-2 text-gray-700">{{ __('Bill To:') }}</h3>
+        <p class="font-bold text-lg text-gray-800">{{ $data->customer->name ?? $data->supplier->name ?? __('Customer Name') }}</p>
         @if(checkInvoiceControl('show_address') && isset($data->customer->address))
             <p class="text-sm text-gray-600">{{ $data->customer->address }}</p>
         @endif
@@ -91,7 +91,7 @@
             <p class="text-sm text-gray-600">{{ $data->customer->email }}</p>
         @endif
         @if(isset($data->customer->tax_number))
-            <p class="text-sm text-gray-600">Tax ID: {{ $data->customer->tax_number }}</p>
+            <p class="text-sm text-gray-600">{{ __('Tax') }} ID: {{ $data->customer->tax_number }}</p>
         @endif
     </div>
 
@@ -99,14 +99,14 @@
     <table class="w-full mb-8 text-left border-collapse">
         <thead>
             <tr class="bg-gray-800 text-white">
-                <th class="p-3 font-semibold text-sm rounded-tl-sm">Product</th>
-                <th class="p-3 font-semibold text-sm text-center">Qty</th>
-                <th class="p-3 font-semibold text-sm text-right">Unit Price</th>
+                <th class="p-3 font-semibold text-sm rounded-tl-sm">{{ __('Product') }}</th>
+                <th class="p-3 font-semibold text-sm text-center">{{ __('Qty') }}</th>
+                <th class="p-3 font-semibold text-sm text-right">{{ __('Unit Price') }}</th>
                 @if(checkInvoiceControl('show_discount'))
-                    <th class="p-3 font-semibold text-sm text-right">Discount</th>
+                    <th class="p-3 font-semibold text-sm text-right">{{ __('Discount') }}</th>
                 @endif
                 @if(checkInvoiceControl('show_order_tax'))
-                    <th class="p-3 font-semibold text-sm text-right">Tax</th>
+                    <th class="p-3 font-semibold text-sm text-right">{{ __('Tax') }}</th>
                 @endif
                 <th class="p-3 font-semibold text-sm text-right rounded-tr-sm">SubTotal</th>
             </tr>
@@ -114,7 +114,7 @@
         <tbody>
             @forelse($data->details ?? [] as $detail)
             <tr class="border-b border-gray-200 hover:bg-gray-50">
-                <td class="p-3 text-sm text-gray-800">{{ $detail->product->name ?? 'Item Name' }}</td>
+                <td class="p-3 text-sm text-gray-800">{{ $detail->product->name ?? __('Item Name') }}</td>
                 <td class="p-3 text-sm text-center text-gray-800">{{ $detail->quantity ?? 1 }}</td>
                 <td class="p-3 text-sm text-right text-gray-800">{{ format_currency($detail->unit_price ?? 0) }}</td>
                 @if(checkInvoiceControl('show_discount'))
@@ -127,7 +127,7 @@
             </tr>
             @empty
             <tr class="border-b border-gray-200">
-                <td colspan="6" class="p-3 text-sm text-center text-gray-500">No items available.</td>
+                <td colspan="6" class="p-3 text-sm text-center text-gray-500">{{ __('No items available.') }}</td>
             </tr>
             @endforelse
         </tbody>
@@ -138,33 +138,33 @@
         <div class="w-full md:w-1/2 lg:w-1/3">
             @if(checkInvoiceControl('show_order_tax'))
                 <div class="flex justify-between border-b border-gray-200 py-2">
-                    <span class="text-gray-600">Order Tax:</span>
+                    <span class="text-gray-600">{{ __('Order Tax:') }}</span>
                     <span class="font-medium text-gray-800">{{ format_currency($data->tax_amount ?? 0) }}</span>
                 </div>
             @endif
             @if(checkInvoiceControl('show_discount'))
                 <div class="flex justify-between border-b border-gray-200 py-2">
-                    <span class="text-gray-600">Discount:</span>
+                    <span class="text-gray-600">{{ __('Discount:') }}</span>
                     <span class="font-medium text-gray-800">{{ format_currency($data->discount_amount ?? $data->discount ?? 0) }}</span>
                 </div>
             @endif
             @if(checkInvoiceControl('show_shipping'))
                 <div class="flex justify-between border-b border-gray-200 py-2">
-                    <span class="text-gray-600">Shipping:</span>
+                    <span class="text-gray-600">{{ __('Shipping:') }}</span>
                     <span class="font-medium text-gray-800">{{ format_currency($data->shipping_amount ?? 0) }}</span>
                 </div>
             @endif
             <div class="flex justify-between py-4 text-xl font-bold border-b-2 border-gray-800">
-                <span class="text-gray-800">Grand Total:</span>
+                <span class="text-gray-800">{{ __('Grand Total:') }}</span>
                 <span class="text-theme-primary">{{ format_currency($data->total_amount ?? 0) }}</span>
             </div>
             @if(isset($data->paid_amount))
             <div class="flex justify-between py-2 text-md">
-                <span class="text-gray-600">Paid Amount:</span>
+                <span class="text-gray-600">{{ __('Paid Amount:') }}</span>
                 <span class="font-medium text-green-600">{{ format_currency($data->paid_amount) }}</span>
             </div>
             <div class="flex justify-between py-2 text-md font-semibold">
-                <span class="text-gray-600">Due Amount:</span>
+                <span class="text-gray-600">{{ __('Due Amount:') }}</span>
                 <span class="text-red-600">{{ format_currency($data->due_amount ?? ($data->total_amount - $data->paid_amount)) }}</span>
             </div>
             @endif
@@ -174,7 +174,7 @@
     <!-- Footer -->
     @if(settings('invoice_footer'))
     <div class="mt-16">
-        <img src="{{ asset('storage/settings/' . settings('invoice_footer')) }}" alt="Invoice Footer" class="w-full h-auto">
+        <img src="{{ asset('storage/settings/' . settings('invoice_footer')) }}" alt="{{ __('Invoice Footer') }}" class="w-full h-auto">
     </div>
     @elseif(settings('invoice_footer_text'))
     <div class="mt-16 pt-8 border-t border-gray-300 text-center text-sm text-gray-500">

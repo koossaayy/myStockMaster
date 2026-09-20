@@ -76,10 +76,10 @@ class DesktopErrorLog extends Component
         $userId = Auth::id();
 
         if ($this->errorHandler->clearErrorHistory($userId)) {
-            session()->flash('success', __('desktop.logging.error_history') . ' cleared successfully.');
+            session()->flash('success', __(':__ cleared successfully.', ['__' => __('desktop.logging.error_history')]));
             $this->resetPage();
         } else {
-            session()->flash('error', 'Failed to clear error history.');
+            session()->flash('error', __('Failed to clear error history.'));
         }
     }
 
@@ -191,10 +191,10 @@ class DesktopErrorLog extends Component
     private function getSeverityOptions(): array
     {
         return [
-            'low' => 'Low',
-            'medium' => 'Medium',
-            'high' => 'High',
-            'critical' => 'Critical',
+            'low' => __('Low'),
+            'medium' => __('Medium'),
+            'high' => __('High'),
+            'critical' => __('Critical'),
         ];
     }
 

@@ -29,7 +29,7 @@
                         </div>
                         <h2 class="text-2xl font-semibold text-orange-900 mb-3 font-display">{{__('Welcome to')}} {{ config('app.name') }}!</h2>
                         <p class="text-orange-600 text-base leading-relaxed max-w-sm mx-auto">
-                            {{__('Your setup is complete and we're now reviewing your account. You'll receive an email notification once your account is approved.')}}
+                            {{__('Your setup is complete and we're now reviewing your account. You__('ll receive an email notification once your account is approved.'))}}
                         </p>
                         
                         @auth
@@ -39,9 +39,9 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                     </svg>
                                     <p class="text-sm text-green-800">
-                                        <strong>{{(__'Good news')}}!</strong> {{__('You\'re already logged in.')}} 
-                                        <a href="{{ route('dashboard') }}" class="text-green-600 hover:text-green-700 font-medium underline decoration-green-600/30 hover:decoration-green-600 transition-all">Go to dashboard</a> or 
-                                        <a href="{{ route('logout') }}" class="text-green-600 hover:text-green-700 font-medium underline decoration-green-600/30 hover:decoration-green-600 transition-all">sign out</a>.
+                                        <strong>{{(____('Good news'))}}!</strong> {{__('You\'re already logged in.')}} 
+                                        <a href="{{ route('dashboard') }}" class="text-green-600 hover:text-green-700 font-medium underline decoration-green-600/30 hover:decoration-green-600 transition-all">{{ __('Go to dashboard') }}</a> {{ __('or') }} 
+                                        <a href="{{ route('logout') }}" class="text-green-600 hover:text-green-700 font-medium underline decoration-green-600/30 hover:decoration-green-600 transition-all">{{ __('sign out') }}</a>.
                                     </p>
                                 </div>
                             </div>
@@ -55,7 +55,7 @@
                                     </svg>
                                     <p class="text-sm text-orange-800">
                                         {{__('Already have an account?')}}  
-                                        <a href="{{ url('/login') }}" class="text-orange-600 hover:text-orange-700 font-medium underline decoration-orange-600/30 hover:decoration-orange-600 transition-all">Sign in here</a>.
+                                        <a href="{{ url('/login') }}" class="text-orange-600 hover:text-orange-700 font-medium underline decoration-orange-600/30 hover:decoration-orange-600 transition-all">{{ __('Sign in here') }}</a>.
                                     </p>
                                 </div>
                             </div>
@@ -67,27 +67,27 @@
                             <svg class="w-5 h-5 text-orange-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                             </svg>
-                            What's next?
+                            {{ __("What's next?") }}
                         </h3>
                         <ul class="text-sm text-orange-600 space-y-2">
                             <li class="flex items-start">
                                 <span class="w-2 h-2 bg-orange-400 rounded-full mr-3 mt-2 shrink-0"></span>
-                                Our team will review your setup within 24 hours
+                                {{ __('Our team will review your setup within 24 hours') }}
                             </li>
                             <li class="flex items-start">
                                 <span class="w-2 h-2 bg-orange-400 rounded-full mr-3 mt-2 shrink-0"></span>
-                                You'll receive login credentials via email
+                                {{ __("You'll receive login credentials via email") }}
                             </li>
                             <li class="flex items-start">
                                 <span class="w-2 h-2 bg-orange-400 rounded-full mr-3 mt-2 shrink-0"></span>
-                                Start managing your restaurant immediately after approval
+                                {{ __('Start managing your restaurant immediately after approval') }}
                             </li>
                         </ul>
                     </div>
 
                     <div class="text-center">
                         <p class="text-sm text-orange-600">
-                            Need help? Contact us at 
+                            {{ __('Need help? Contact us at') }} 
                             <a href="mailto:support@restopos.com" class="text-orange-600 hover:text-orange-700 font-medium underline decoration-orange-600/30 hover:decoration-orange-600 transition-all">
                                 support@restopos.com
                             </a>

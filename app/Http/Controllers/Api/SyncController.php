@@ -31,6 +31,6 @@ class SyncController extends Controller
     public function push(Request $request): JsonResponse
     {
         // TODO: Handle incoming changes from desktop
-        return new \Illuminate\Http\JsonResponse(['message' => 'Push received']);
+        return new \Illuminate\Http\JsonResponse(['message' => __('Push received')]);
     }
 }

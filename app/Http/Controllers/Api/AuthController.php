@@ -39,7 +39,7 @@ class AuthController extends Controller
     {
         if (! Auth::attempt($request->only(['email', 'password']))) {
             return new \Illuminate\Http\JsonResponse([
-                'message' => 'Invalid login details',
+                'message' => __('Invalid login details'),
             ], 401);
         }
 

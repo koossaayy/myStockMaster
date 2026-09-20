@@ -32,11 +32,11 @@
         <div>
             <x-label for="font_family" :value="__('Font Family')" />
             <x-select id="font_family" wire:model.blur="font_family" class="mt-1">
-                <option value="Inter, sans-serif">Inter</option>
-                <option value="Arial, sans-serif">Arial</option>
-                <option value="Georgia, serif">Georgia</option>
-                <option value="'Courier New', monospace">Courier New</option>
-                <option value="Tahoma, sans-serif">Tahoma</option>
+                <option value="Inter, sans-serif">{{ __('Inter') }}</option>
+                <option value="Arial, sans-serif">{{ __('Arial') }}</option>
+                <option value="Georgia, serif">{{ __('Georgia') }}</option>
+                <option value="'Courier New', monospace">{{ __('Courier New') }}</option>
+                <option value="Tahoma, sans-serif">{{ __('Tahoma') }}</option>
             </x-select>
             <p class="text-xs text-gray-500 mt-1">{{ __('Select the typography style for your documents.') }}</p>
         </div>
@@ -44,10 +44,10 @@
         <div>
             <x-label for="pattern_style" :value="__('Background Pattern')" />
             <x-select id="pattern_style" wire:model.blur="pattern_style" class="mt-1">
-                <option value="none">None</option>
-                <option value="dots">Dots</option>
-                <option value="stripes">Stripes</option>
-                <option value="grid">Grid</option>
+                <option value="none">{{ __('None') }}</option>
+                <option value="dots">{{ __('Dots') }}</option>
+                <option value="stripes">{{ __('Stripes') }}</option>
+                <option value="grid">{{ __('Grid') }}</option>
             </x-select>
             <p class="text-xs text-gray-500 mt-1">{{ __('Add a subtle background texture to your documents.') }}</p>
         </div>
@@ -77,48 +77,48 @@
         <div class="bg-white p-8 rounded-xl shadow-xl w-full max-w-2xl border-t-8 border-t-primary-500 relative z-10">
             <div class="flex justify-between items-start mb-8">
                 <div>
-                    <h2 class="text-4xl font-black tracking-tight text-primary-500">INVOICE</h2>
-                    <p class="text-gray-500 mt-1 font-medium">#INV-2023-001</p>
+                    <h2 class="text-4xl font-black tracking-tight text-primary-500">{{ __('INVOICE') }}</h2>
+                    <p class="text-gray-500 mt-1 font-medium">{{ __('#INV-2023-001') }}</p>
                 </div>
                 <div class="text-right">
-                    <div class="font-bold text-xl text-gray-800">Your Company</div>
-                    <div class="text-gray-500 text-sm mt-1 leading-relaxed">123 Business Street<br>City, State 12345</div>
+                    <div class="font-bold text-xl text-gray-800">{{ __('Your Company') }}</div>
+                    <div class="text-gray-500 text-sm mt-1 leading-relaxed">{{ __('123 Business Street') }}<br>{{ __('City, State 12345') }}</div>
                 </div>
             </div>
 
             <div class="mb-10">
-                <div class="text-gray-500 text-xs font-bold uppercase tracking-wider mb-2 text-primary-500">Bill To:</div>
-                <div class="font-bold text-gray-800 text-lg">Client Name</div>
+                <div class="text-gray-500 text-xs font-bold uppercase tracking-wider mb-2 text-primary-500">{{ __('Bill To:') }}</div>
+                <div class="font-bold text-gray-800 text-lg">{{ __('Client Name') }}</div>
                 <div class="text-gray-500 text-sm">client@example.com</div>
             </div>
 
             <table class="w-full text-left border-collapse">
                 <thead>
                     <tr class="border-b-2 border-primary-500">
-                        <th class="py-3 text-gray-700 font-bold uppercase text-xs tracking-wider">Description</th>
-                        <th class="py-3 text-gray-700 font-bold uppercase text-xs tracking-wider text-right">Amount</th>
+                        <th class="py-3 text-gray-700 font-bold uppercase text-xs tracking-wider">{{ __('Description') }}</th>
+                        <th class="py-3 text-gray-700 font-bold uppercase text-xs tracking-wider text-right">{{ __('Amount') }}</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr class="border-b border-gray-100">
-                        <td class="py-4 text-gray-600 font-medium">Web Design Services</td>
+                        <td class="py-4 text-gray-600 font-medium">{{ __('Web Design Services') }}</td>
                         <td class="py-4 text-gray-600 text-right font-medium">$1,500.00</td>
                     </tr>
                     <tr class="border-b border-gray-100">
-                        <td class="py-4 text-gray-600 font-medium">Hosting (1 Year)</td>
+                        <td class="py-4 text-gray-600 font-medium">{{ __('Hosting (1 Year)') }}</td>
                         <td class="py-4 text-gray-600 text-right font-medium">$150.00</td>
                     </tr>
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td class="py-6 text-right font-bold text-gray-700 uppercase text-sm tracking-wider">Total Due</td>
+                        <td class="py-6 text-right font-bold text-gray-700 uppercase text-sm tracking-wider">{{ __('Total Due') }}</td>
                         <td class="py-6 text-right font-black text-2xl text-primary-500">$1,650.00</td>
                     </tr>
                 </tfoot>
             </table>
 
             <div class="mt-16 text-center text-sm font-medium px-4 py-3 rounded-lg text-primary-500 border border-primary-500/20" style="background-color: {{ $secondary_color }};">
-                Thank you for your business!
+                {{ __('Thank you for your business!') }}
             </div>
         </div>
     </div>

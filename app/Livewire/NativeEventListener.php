@@ -23,7 +23,7 @@ class NativeEventListener extends Component
     public function triggerSync(): void
     {
         // Trigger local sync service...
-        $this->dispatch('alert', ['type' => 'success', 'message' => 'Sync triggered!']);
+        $this->dispatch('alert', ['type' => 'success', 'message' => __('Sync triggered!')]);
     }
 
     public function render(): string

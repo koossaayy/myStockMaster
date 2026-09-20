@@ -139,7 +139,7 @@ class CartService
         // Log cart operation
         $this->logCartOperation('add', $item['id'], $cartItem['quantity'], [
             'row_id' => $rowId,
-            'product_name' => $item['name'] ?? 'Unknown',
+            'product_name' => $item['name'] ?? __('Unknown'),
             'price' => $cartItem['price'],
         ]);
 
@@ -208,7 +208,7 @@ class CartService
         // Log cart operation
         $this->logCartOperation('remove', $item['id'], $item['quantity'], [
             'row_id' => $rowId,
-            'product_name' => $item['name'] ?? 'Unknown',
+            'product_name' => $item['name'] ?? __('Unknown'),
         ]);
 
         return true;

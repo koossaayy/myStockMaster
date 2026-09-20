@@ -15,7 +15,7 @@
 
     <div class="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-2">
         <div class="sm:col-span-2">
-            <label for="company_name" class="block text-sm font-semibold text-orange-700 mb-2">Company Name *</label>
+            <label for="company_name" class="block text-sm font-semibold text-orange-700 mb-2">{{ __('Company Name *') }}</label>
             <input type="text" wire:model="company_name" id="company_name"
                 class="block w-full rounded-xl border-orange-300 shadow-sm focus:border-orange-500 focus:ring-orange-500 sm:text-sm transition-colors duration-200 px-4 py-3 border"
                 placeholder="{{(__('e.g., ABC Trading Company'))}}">
@@ -25,7 +25,7 @@
         </div>
 
         <div class="sm:col-span-2">
-            <label for="company_email" class="block text-sm font-semibold text-orange-700 mb-2">Business Email *</label>
+            <label for="company_email" class="block text-sm font-semibold text-orange-700 mb-2">{{ __('Business Email *') }}</label>
             <input type="email" wire:model="company_email" id="company_email"
                 class="block w-full rounded-xl border-orange-300 shadow-sm focus:border-orange-500 focus:ring-orange-500 sm:text-sm transition-colors duration-200 px-4 py-3 border"
                 placeholder="{{(__('e.g., info@abctrading.com'))}}">
@@ -35,7 +35,7 @@
         </div>
 
         <div>
-            <label for="company_phone" class="block text-sm font-semibold text-orange-700 mb-2">Phone Number *</label>
+            <label for="company_phone" class="block text-sm font-semibold text-orange-700 mb-2">{{ __('Phone Number *') }}</label>
             <input type="tel" wire:model="company_phone" id="company_phone"
                 class="block w-full rounded-xl border-orange-300 shadow-sm focus:border-orange-500 focus:ring-orange-500 sm:text-sm transition-colors duration-200 px-4 py-3 border"
                 placeholder="{{(__('e.g., +1 (555) 123-4567'))}}">
@@ -45,7 +45,7 @@
         </div>
 
         <div>
-            <label for="company_tax" class="block text-sm font-semibold text-orange-700 mb-2">Tax ID (Optional)</label>
+            <label for="company_tax" class="block text-sm font-semibold text-orange-700 mb-2">{{ __('Tax ID (Optional)') }}</label>
             <input type="text" wire:model="company_tax" id="company_tax"
                 class="block w-full rounded-xl border-orange-300 shadow-sm focus:border-orange-500 focus:ring-orange-500 sm:text-sm transition-colors duration-200 px-4 py-3 border"
                 placeholder="{{(__('e.g., 12-3456789'))}}">
@@ -55,8 +55,7 @@
         </div>
 
         <div class="sm:col-span-2">
-            <label for="company_address" class="block text-sm font-semibold text-orange-700 mb-2">Business Address
-                *</label>
+            <label for="company_address" class="block text-sm font-semibold text-orange-700 mb-2">{{ __('Business Address *') }}</label>
             <textarea wire:model="company_address" id="company_address" rows="3"
                 class="block w-full rounded-xl border-orange-300 shadow-sm focus:border-orange-500 focus:ring-orange-500 sm:text-sm transition-colors duration-200 px-4 py-3 border"
                 placeholder="{{(__('e.g., 123 Main Street, City, State 12345'))}}"></textarea>

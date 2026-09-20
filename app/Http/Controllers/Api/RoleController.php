@@ -59,7 +59,7 @@ class RoleController extends Controller
         $role = Role::query()->find($id);
 
         if ($role === null) {
-            return new \Illuminate\Http\JsonResponse(['message' => 'Role not found'], 404);
+            return new \Illuminate\Http\JsonResponse(['message' => __('Role not found')], 404);
         }
 
         return new RoleResource($role);
@@ -84,6 +84,6 @@ class RoleController extends Controller
         $role = Role::query()->findOrFail($id);
         $role->delete();
 
-        return new \Illuminate\Http\JsonResponse(['message' => 'Role deleted successfully']);
+        return new \Illuminate\Http\JsonResponse(['message' => __('Role deleted successfully')]);
     }
 }

@@ -541,13 +541,13 @@ final class CalculateCustomerMetricsAction
     private function getLTVCACRecommendation(float $ratio): string
     {
         if ($ratio >= 3) {
-            return 'Excellent ratio! Consider increasing marketing spend to acquire more customers.';
+            return __('Excellent ratio! Consider increasing marketing spend to acquire more customers.');
         } elseif ($ratio >= 2) {
-            return 'Good ratio. Monitor closely and optimize acquisition channels.';
+            return __('Good ratio. Monitor closely and optimize acquisition channels.');
         } elseif ($ratio >= 1) {
-            return 'Acceptable but needs improvement. Focus on increasing CLV or reducing CAC.';
+            return __('Acceptable but needs improvement. Focus on increasing CLV or reducing CAC.');
         } else {
-            return 'Poor ratio. Urgent action needed to improve profitability of customer acquisition.';
+            return __('Poor ratio. Urgent action needed to improve profitability of customer acquisition.');
         }
     }
 }

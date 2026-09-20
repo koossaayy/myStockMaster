@@ -8,7 +8,7 @@ class InvalidQuantityException extends CartException
 {
     public function __construct(int $quantity, string $reason = 'Invalid quantity provided', array $context = [])
     {
-        $message = sprintf('Invalid quantity %d: %s', $quantity, $reason);
+        $message = sprintf(__('Invalid quantity %d: %s'), $quantity, $reason);
         parent::__construct($message, 400, null, array_merge($context, ['quantity' => $quantity]));
         $this->setErrorCode('INVALID_QUANTITY');
     }

@@ -44,7 +44,7 @@ class SyncService
                 } else {
                     Log::error('Sync Pull Failed', ['status' => $response->status(), 'body' => $response->body()]);
 
-                    return ['status' => 'error', 'message' => 'Failed to pull changes from cloud.'];
+                    return ['status' => 'error', 'message' => __('Failed to pull changes from cloud.')];
                 }
             }
 
@@ -54,7 +54,7 @@ class SyncService
             // Update timestamp
             cache(['last_synced_at' => now()->toIso8601String()]);
 
-            return ['status' => 'success', 'message' => 'Sync completed successfully.'];
+            return ['status' => 'success', 'message' => __('Sync completed successfully.')];
         } catch (Exception $exception) {
             Log::error('Sync Exception: ' . $exception->getMessage());
 

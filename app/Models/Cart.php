@@ -237,7 +237,7 @@ class Cart extends Model
     {
         $conditions = $this->conditions ?? [];
         $conditions[] = array_merge([
-            'name' => 'Condition',
+            'name' => __('Condition'),
             'type' => 'fixed',
             'target' => 'subtotal',
             'value' => 0,

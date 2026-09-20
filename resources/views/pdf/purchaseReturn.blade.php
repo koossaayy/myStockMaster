@@ -17,7 +17,7 @@
         <div id="company">
             <div><strong> {{ __('Date') }}: </strong>{{ $return_purchase['date'] }}</div>
             <div><strong> {{ __('Number') }}: </strong> {{ $return_purchase['reference'] }}</div>
-            <div><strong> Réf d'achat: </strong> {{ $return_purchase['purchase_ref'] }}</div>
+            <div><strong> {{ __("Réf d'achat:") }} </strong> {{ $return_purchase['purchase_ref'] }}</div>
         </div>
         <div id="Title-heading">
             {{ __('Return') }} {{ $return_purchase['reference'] }}

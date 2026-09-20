@@ -163,7 +163,7 @@
                             @endif
                         </div>
                         <p class="text-xs text-blue-500 dark:text-blue-400 font-medium leading-relaxed max-w-2xl">
-                            {{ $data['message'] ?? 'New system alert received.' }}
+                            {{ $data['message'] ?? __('New system alert received.') }}
                         </p>
                         <div class="flex items-center gap-4 mt-3">
                             <span class="flex items-center gap-1.5 text-[10px] font-bold text-gray-400 uppercase tracking-tight">

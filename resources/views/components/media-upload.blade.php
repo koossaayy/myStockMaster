@@ -131,7 +131,7 @@
                     <p class="text-base font-medium text-zinc-700">
                         {{ __('Click to upload') }} <span class="font-normal text-zinc-500">{{ __('or drag and drop') }}</span>
                     </p>
-                    <p class="text-sm text-zinc-400 mt-2">{{ $types ?? 'SVG, PNG, JPG or GIF (MAX. 800x400px)' }}</p>
+                    <p class="text-sm text-zinc-400 mt-2">{{ $types ?? __('SVG, PNG, JPG or GIF (MAX. 800x400px)') }}</p>
                 </div>
                 @endif
 
@@ -219,7 +219,7 @@
                     <p class="text-base font-medium text-zinc-700">
                         {{ __('Click to upload multiple files') }} <span class="font-normal text-zinc-500">{{ __('or drag and drop') }}</span>
                     </p>
-                    <p class="text-sm text-zinc-400 mt-2">{{ $types ?? 'SVG, PNG, JPG or GIF (MAX. 800x400px)' }}</p>
+                    <p class="text-sm text-zinc-400 mt-2">{{ $types ?? __('SVG, PNG, JPG or GIF (MAX. 800x400px)') }}</p>
                 </div>
                 @endif
                 @endif

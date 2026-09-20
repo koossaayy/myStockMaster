@@ -48,7 +48,7 @@
                                     <p class="invoice-number mb-2"><b>{{ __('Reference No') }}: </b>
                                         {{ $data->reference }}
                                     </p>
-                                    <p class="invoice-date"><b>Date: </b>
+                                    <p class="invoice-date"><b>{{ __('Date:') }} </b>
                                         {{ $data->date }}
                                     </p>
                                 </div>

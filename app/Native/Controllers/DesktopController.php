@@ -22,7 +22,7 @@ class DesktopController extends Controller
             if (! EnvironmentService::isDesktop()) {
                 return new \Illuminate\Http\JsonResponse([
                     'success' => false,
-                    'message' => 'Desktop features are only available in desktop mode',
+                    'message' => __('Desktop features are only available in desktop mode'),
                 ], 403);
             }
 
@@ -101,7 +101,7 @@ class DesktopController extends Controller
 
             return new \Illuminate\Http\JsonResponse([
                 'success' => true,
-                'message' => 'Desktop shortcuts registered successfully',
+                'message' => __('Desktop shortcuts registered successfully'),
             ]);
         } catch (Exception $exception) {
             Log::error('Failed to register desktop shortcuts', [
@@ -111,7 +111,7 @@ class DesktopController extends Controller
 
             return new \Illuminate\Http\JsonResponse([
                 'success' => false,
-                'message' => 'Failed to register shortcuts: ' . $exception->getMessage(),
+                'message' => __('Failed to register shortcuts: :message', ['message' => $exception->getMessage()]),
             ], 500);
         }
     }
@@ -162,7 +162,7 @@ class DesktopController extends Controller
 
             return new \Illuminate\Http\JsonResponse([
                 'success' => false,
-                'message' => 'Action failed: ' . $exception->getMessage(),
+                'message' => __('Action failed: :message', ['message' => $exception->getMessage()]),
             ], 500);
         }
     }
@@ -198,7 +198,7 @@ class DesktopController extends Controller
         return [
             'success' => true,
             'action' => 'notification_shown',
-            'message' => 'Notification displayed successfully',
+            'message' => __('Notification displayed successfully'),
         ];
     }
 
@@ -313,7 +313,7 @@ class DesktopController extends Controller
             return new \Illuminate\Http\JsonResponse([
                 'success' => true,
                 'error_id' => $result['error_id'],
-                'message' => 'JavaScript error logged successfully',
+                'message' => __('JavaScript error logged successfully'),
             ]);
         } catch (Exception $exception) {
             Log::error('Failed to handle JavaScript error', [
@@ -323,7 +323,7 @@ class DesktopController extends Controller
 
             return new \Illuminate\Http\JsonResponse([
                 'success' => false,
-                'message' => 'Failed to log JavaScript error',
+                'message' => __('Failed to log JavaScript error'),
             ], 500);
         }
     }

@@ -14,7 +14,7 @@
          <img src="{{asset('/images/'.$setting['logo'])}}">
          </div>
          <div id="company">
-            <div><strong> Date: </strong>{{$quotation->date }}</div>
+            <div><strong> {{ __('Date:') }} </strong>{{$quotation->date }}</div>
          </div>
          <div id="Title-heading">
             {{__('Quotation')}}  : {{$quotation->reference}}
@@ -68,12 +68,12 @@
             <table class="table-sm">
                <thead>
                   <tr>
-                     <th>PODUIT</th>
-                     <th>PRIX UNITAIRE</th>
-                     <th>QUANTITE</th>
-                     <th>REMISE</th>
-                     <th>TAXE</th>
-                     <th>TOTAL</th>
+                     <th>{{ __('PODUIT') }}</th>
+                     <th>{{ __('PRIX UNITAIRE') }}</th>
+                     <th>{{ __('QUANTITE') }}</th>
+                     <th>{{ __('REMISE') }}</th>
+                     <th>{{ __('TAXE') }}</th>
+                     <th>{{ __('TOTAL') }}</th>
                   </tr>
                </thead>
                <tbody>
@@ -95,15 +95,15 @@
          <div id="total">
             <table>
                <tr>
-                  <td>Taxe de commande</td>
+                  <td>{{ __('Taxe de commande') }}</td>
                   <td>{{$quotation->TaxNet }} </td>
                </tr>
                <tr>
-                  <td>Remise</td>
+                  <td>{{ __('REMISE') }}</td>
                   <td>{{$quotation->discount }} </td>
                </tr>
                <tr>
-                  <td>Livraison</td>
+                  <td>{{ __('Livraison') }}</td>
                   <td>{{$quotation->shipping }} </td>
                </tr>
                <tr>

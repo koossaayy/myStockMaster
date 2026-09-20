@@ -50,8 +50,8 @@
                                 <div class="invoice-left">
                                     <b>{{ __('Invoice To') }}:</b>
                                     <address>
-                                        Invoice: {{ $data->reference }} <br>
-                                        Date: {{ $data->date }}
+                                        {{ __('Invoice: :param_1', ['param_1' => $data->reference]) }} <br>
+                                        {{ __('Date: :param_1', ['param_1' => $data->date]) }}
                                     </address>
                                 </div>
                             </div>

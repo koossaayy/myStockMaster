@@ -3,22 +3,22 @@
     <div class="flex items-center justify-between">
         <div>
             <h1 class="text-2xl font-bold text-gray-900">{{ __('desktop.logging.error_history') }}</h1>
-            <p class="text-gray-600 mt-1">Monitor and manage desktop application errors</p>
+            <p class="text-gray-600 mt-1">{{ __('Monitor and manage desktop application errors') }}</p>
         </div>
 
         <div class="flex items-center space-x-3">
             <button wire:click="toggleStatistics"
                 class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
-                {{ $showStatistics ? 'Hide' : 'Show' }} Statistics
+                {{ __(':param_1 Statistics', ['param_1' => $showStatistics ? __('Hide') : __('Show')]) }}
             </button>
 
             <button wire:click="exportErrorLog"
                 class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors">
-                Export Log
+                {{ __('Export Log') }}
             </button>
 
             <button wire:click="clearErrorHistory"
-                wire:confirm="Are you sure you want to clear all error history? This action cannot be undone."
+                wire:confirm="{{ __('Are you sure you want to clear all error history? This action cannot be undone.') }}"
                 class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors">
                 {{ __('desktop.logging.clear_error_history') }}
             </button>
@@ -61,7 +61,7 @@
 
                 <div class="bg-green-50 p-4 rounded-lg">
                     <div class="text-2xl font-bold text-green-600">
-                        {{ $statistics['most_recent'] ? $this->getRelativeTime($statistics['most_recent']['timestamp']) : 'None' }}
+                        {{ $statistics['most_recent'] ? $this->getRelativeTime($statistics['most_recent']['timestamp']) : __('None') }}
                     </div>
                     <div class="text-sm text-green-800">{{ __('desktop.logging.most_recent_error') }}</div>
                 </div>
@@ -103,7 +103,7 @@
                 <div class="mt-6 p-4 bg-gray-50 rounded-lg">
                     <h3 class="font-medium text-gray-900 mb-2">{{ __('desktop.logging.most_frequent_error') }}</h3>
                     <p class="text-sm text-gray-700">{{ $statistics['most_frequent']['message'] }}</p>
-                    <p class="text-xs text-gray-500 mt-1">Occurred {{ $statistics['most_frequent']['count'] }} times
+                    <p class="text-xs text-gray-500 mt-1">{{ __('Occurred :param_1 times', ['param_1' => $statistics['most_frequent']['count']]) }}
                     </p>
                 </div>
             @endif
@@ -114,16 +114,16 @@
     <div class="bg-white rounded-lg shadow-sm border p-4">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
             <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Search</label>
-                <input type="text" wire:model.live.debounce.300ms="searchTerm" placeholder="Search errors..."
+                <label class="block text-sm font-medium text-gray-700 mb-1">{{ __('Search') }}</label>
+                <input type="text" wire:model.live.debounce.300ms="searchTerm" placeholder="{{ __('Search errors...') }}"
                     class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
             </div>
 
             <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Severity</label>
+                <label class="block text-sm font-medium text-gray-700 mb-1">{{ __('Severity') }}</label>
                 <x-select wire:model.live="filterSeverity"
                     class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    <option value="">All Severities</option>
+                    <option value="">{{ __('All Severities') }}</option>
                     @foreach ($severityOptions as $value => $label)
                         <option value="{{ $value }}">{{ $label }}</option>
                     @endforeach
@@ -131,10 +131,10 @@
             </div>
 
             <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Category</label>
+                <label class="block text-sm font-medium text-gray-700 mb-1">{{ __('Category') }}</label>
                 <x-select wire:model.live="filterCategory"
                     class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    <option value="">All Categories</option>
+                    <option value="">{{ __('All Categories') }}</option>
                     @foreach ($categoryOptions as $value => $label)
                         <option value="{{ $value }}">{{ $label }}</option>
                     @endforeach
@@ -142,7 +142,7 @@
             </div>
 
             <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">From Date</label>
+                <label class="block text-sm font-medium text-gray-700 mb-1">{{ __('From Date') }}</label>
                 <input type="date" wire:model.live="filterDateFrom"
                     class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
             </div>
@@ -150,7 +150,7 @@
             <div class="flex items-end">
                 <button wire:click="resetFilters"
                     class="w-full px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700 transition-colors">
-                    Reset Filters
+                    {{ __('Reset Filters') }}
                 </button>
             </div>
         </div>
@@ -162,7 +162,7 @@
             <div class="p-8 text-center">
                 <i class="w-16 h-16 text-green-500 mx-auto mb-4" {{ $this->getCategoryIcon('application') }}></i>
                 <h3 class="text-lg font-medium text-gray-900 mb-2">{{ __('desktop.logging.no_errors') }}</h3>
-                <p class="text-gray-600">No errors match your current filters.</p>
+                <p class="text-gray-600">{{ __('No errors match your current filters.') }}</p>
             </div>
         @else
             <div class="overflow-x-auto">
@@ -182,7 +182,7 @@
                                 {{ __('desktop.logging.error_message') }}
                             </th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Actions
+                                {{ __('Actions') }}
                             </th>
                         </tr>
                     </thead>
@@ -277,7 +277,7 @@
 
                         @if (isset($selectedError['file']))
                             <div>
-                                <label class="block text-sm font-medium text-gray-700">File & Line</label>
+                                <label class="block text-sm font-medium text-gray-700">{{ __('File & Line') }}</label>
                                 <p class="mt-1 text-sm text-gray-900">
                                     {{ $selectedError['file'] }}:{{ $selectedError['line'] ?? '?' }}</p>
                             </div>
@@ -285,14 +285,14 @@
 
                         @if (isset($selectedError['trace']))
                             <div>
-                                <label class="block text-sm font-medium text-gray-700">Stack Trace</label>
+                                <label class="block text-sm font-medium text-gray-700">{{ __('Stack Trace') }}</label>
                                 <pre class="mt-1 text-xs text-gray-900 bg-gray-50 p-3 rounded overflow-x-auto">{{ $selectedError['trace'] }}</pre>
                             </div>
                         @endif
 
                         @if (isset($selectedError['context']) && !empty($selectedError['context']))
                             <div>
-                                <label class="block text-sm font-medium text-gray-700">Context</label>
+                                <label class="block text-sm font-medium text-gray-700">{{ __('Context') }}</label>
                                 <pre class="mt-1 text-xs text-gray-900 bg-gray-50 p-3 rounded overflow-x-auto">{{ json_encode($selectedError['context'], JSON_PRETTY_PRINT) }}</pre>
                             </div>
                         @endif
@@ -301,7 +301,7 @@
                     <div class="mt-6 flex justify-end">
                         <button wire:click="closeErrorDetails"
                             class="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors">
-                            Close
+                            {{ __('Close') }}
                         </button>
                     </div>
                 </div>

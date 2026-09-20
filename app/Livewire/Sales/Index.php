@@ -221,7 +221,7 @@ class Index extends Component
         } else {
             $greeting = __('Hello');
             $messageText = __('You have a due amount of');
-            $message = sprintf('%s %s %s %s.', $greeting, $name, $messageText, $dueAmount);
+            $message = sprintf(__('%s %s %s %s.'), $greeting, $name, $messageText, $dueAmount);
         }
 
         // Encode the message text for use in the URL.

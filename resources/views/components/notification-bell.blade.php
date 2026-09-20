@@ -229,7 +229,7 @@ new class extends Component
                                                 {{ $notification->data['title'] ?? __('System Alert') }}
                                             </p>
                                             <p class="text-xs text-blue-500 dark:text-blue-400 mt-1 line-clamp-2">
-                                                {{ $notification->data['message'] ?? 'New notification received' }}
+                                                {{ $notification->data['message'] ?? __('New notification received') }}
                                             </p>
                                             <span class="text-[10px] text-gray-400 mt-2 block font-medium">
                                                 {{ $notification->created_at->diffForHumans() }}

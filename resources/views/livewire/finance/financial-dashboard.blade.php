@@ -281,9 +281,8 @@
                                                             </td>
                                                             <td>
                                                                 @php
-                                                                    $performance = $margin > 30 ? 'Excellent' : ($margin > 15 ? 'Good' : 'Poor');
-                                                                    $badgeClass = $margin > 30 ? 'bg-success' : ($margin > 15 ? 'bg-warning' : 'bg-danger');
-                                                                @endphp
+                                                                    $performance = $margin > 30 ? __('Excellent') : ($margin > 15 ? __('Good') : __('Poor'));
+                                                                    $badgeClass = $margin > 30 ? 'bg-success' : ($margin > 15 ? 'bg-warning' : 'bg-danger');@endphp
                                                                 <span class="badge {{ $badgeClass }}">
                                                                     {{ __($performance) }}
                                                                 </span>

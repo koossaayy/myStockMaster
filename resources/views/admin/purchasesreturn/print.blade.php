@@ -14,7 +14,7 @@
         <div class="row">
             <div class="col-xs-12">
                 <div style="text-align: center;margin-bottom: 25px;">
-                    <img width="180" src="{{ public_path('images/logo-dark.png') }}" alt="Logo">
+                    <img width="180" src="{{ public_path('images/logo-dark.png') }}" alt="{{ __('Logo') }}">
                     <h4 style="margin-bottom: 20px;">
                         <span>{{ __('Reference') }}::</span> <strong>{{ $purchase_return->reference }}</strong>
                     </h4>
@@ -154,8 +154,7 @@
                         </div>
                         <div class="row" style="margin-top: 25px;">
                             <div class="col-xs-12">
-                                <p style="font-style: italic;text-align: center"> {{ settings()->company_name ?? config('app.name') }} &copy;
-                                    {{ date('Y') }}.</p>
+                                <p style="font-style: italic;text-align: center"> {{ __(':param_1 &copy; :param_2.', ['param_1' => settings()->company_name ?? config('app.name'), 'param_2' => date('Y')]) }}</p>
                             </div>
                         </div>
                     </div>

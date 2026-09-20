@@ -93,7 +93,7 @@
                                     </x-table.tr>
                                     <x-table.tr>
                                         <x-table.th>{{ __('Tax (%)') }}</x-table.th>
-                                        <x-table.td>{{ $product?->order_tax ?? 'N/A' }}</x-table.td>
+                                        <x-table.td>{{ $product?->order_tax ?? __('N/A') }}</x-table.td>
                                     </x-table.tr>
                                     <x-table.tr>
                                         <x-table.th>{{ __('Tax Type') }}</x-table.th>
@@ -103,13 +103,13 @@
                                             @elseif($product?->tax_type == 2)
                                                 {{ __('Inclusive') }}
                                             @else
-                                                N/A
+                                                {{ __('N/A') }}
                                             @endif
                                         </x-table.td>
                                     </x-table.tr>
                                     <x-table.tr>
                                         <x-table.th>{{ __('Description') }}</x-table.th>
-                                        <x-table.td>{{ $product?->note ?? 'N/A' }}</x-table.td>
+                                        <x-table.td>{{ $product?->note ?? __('N/A') }}</x-table.td>
                                     </x-table.tr>
                                 </x-table-responsive>
                             </div>

@@ -71,18 +71,18 @@ class DatabaseSync extends Component
     public function syncToOffline(): void
     {
         if (! $this->isOnline) {
-            $this->addToLog('error', 'Cannot sync to offline: Online database is not available');
+            $this->addToLog('error', __('Cannot sync to offline: Online database is not available'));
 
             return;
         }
 
         try {
-            $this->addToLog('info', 'Starting sync from online to offline database...');
+            $this->addToLog('info', __('Starting sync from online to offline database...'));
 
             $result = $this->syncService->syncToOffline();
 
             if ($result) {
-                $this->addToLog('success', 'Successfully synced data to offline database');
+                $this->addToLog('success', __('Successfully synced data to offline database'));
                 $this->updateLastSync();
 
                 // Show success notification
@@ -91,7 +91,7 @@ class DatabaseSync extends Component
                     'message' => __('admin.database_sync.messages.sync_to_offline_success'),
                 ]);
             } else {
-                $this->addToLog('error', 'Failed to sync data to offline database');
+                $this->addToLog('error', __('Failed to sync data to offline database'));
 
                 $this->dispatch('notify', [
                     'type' => 'error',
@@ -99,7 +99,7 @@ class DatabaseSync extends Component
                 ]);
             }
         } catch (Exception $exception) {
-            $this->addToLog('error', 'Sync to offline failed: ' . $exception->getMessage());
+            $this->addToLog('error', __('Sync to offline failed: :message', ['message' => $exception->getMessage()]));
             Log::error('Sync to offline failed', ['error' => $exception->getMessage()]);
 
             $this->dispatch('notify', [
@@ -113,18 +113,18 @@ class DatabaseSync extends Component
     public function syncToOnline(): void
     {
         if (! $this->isOnline) {
-            $this->addToLog('error', 'Cannot sync to online: Online database is not available');
+            $this->addToLog('error', __('Cannot sync to online: Online database is not available'));
 
             return;
         }
 
         try {
-            $this->addToLog('info', 'Starting sync from offline to online database...');
+            $this->addToLog('info', __('Starting sync from offline to online database...'));
 
             $result = $this->syncService->syncToOnline();
 
             if ($result) {
-                $this->addToLog('success', 'Successfully synced data to online database');
+                $this->addToLog('success', __('Successfully synced data to online database'));
                 $this->updateLastSync();
 
                 // Show success notification
@@ -133,7 +133,7 @@ class DatabaseSync extends Component
                     'message' => __('admin.database_sync.messages.sync_to_online_success'),
                 ]);
             } else {
-                $this->addToLog('error', 'Failed to sync data to online database');
+                $this->addToLog('error', __('Failed to sync data to online database'));
 
                 $this->dispatch('notify', [
                     'type' => 'error',
@@ -141,7 +141,7 @@ class DatabaseSync extends Component
                 ]);
             }
         } catch (Exception $exception) {
-            $this->addToLog('error', 'Sync to online failed: ' . $exception->getMessage());
+            $this->addToLog('error', __('Sync to online failed: :message', ['message' => $exception->getMessage()]));
             Log::error('Sync to online failed', ['error' => $exception->getMessage()]);
 
             $this->dispatch('notify', [
@@ -155,26 +155,26 @@ class DatabaseSync extends Component
     public function syncBidirectional(): void
     {
         if (! $this->isOnline) {
-            $this->addToLog('error', 'Cannot perform bidirectional sync: Online database is not available');
+            $this->addToLog('error', __('Cannot perform bidirectional sync: Online database is not available'));
 
             return;
         }
 
         try {
-            $this->addToLog('info', 'Starting bidirectional sync...');
+            $this->addToLog('info', __('Starting bidirectional sync...'));
 
             // First sync from online to offline
             $toOfflineResult = $this->syncService->syncToOffline();
 
             if ($toOfflineResult) {
-                $this->addToLog('success', 'Phase 1: Successfully synced from online to offline');
+                $this->addToLog('success', __('Phase 1: Successfully synced from online to offline'));
 
                 // Then sync from offline to online
                 $toOnlineResult = $this->syncService->syncToOnline();
 
                 if ($toOnlineResult) {
-                    $this->addToLog('success', 'Phase 2: Successfully synced from offline to online');
-                    $this->addToLog('success', 'Bidirectional sync completed successfully');
+                    $this->addToLog('success', __('Phase 2: Successfully synced from offline to online'));
+                    $this->addToLog('success', __('Bidirectional sync completed successfully'));
                     $this->updateLastSync();
 
                     $this->dispatch('notify', [
@@ -182,13 +182,13 @@ class DatabaseSync extends Component
                         'message' => __('admin.database_sync.messages.bidirectional_sync_success'),
                     ]);
                 } else {
-                    $this->addToLog('error', 'Phase 2: Failed to sync from offline to online');
+                    $this->addToLog('error', __('Phase 2: Failed to sync from offline to online'));
                 }
             } else {
-                $this->addToLog('error', 'Phase 1: Failed to sync from online to offline');
+                $this->addToLog('error', __('Phase 1: Failed to sync from online to offline'));
             }
         } catch (Exception $exception) {
-            $this->addToLog('error', 'Bidirectional sync failed: ' . $exception->getMessage());
+            $this->addToLog('error', __('Bidirectional sync failed: :message', ['message' => $exception->getMessage()]));
             Log::error('Bidirectional sync failed', ['error' => $exception->getMessage()]);
 
             $this->dispatch('notify', [

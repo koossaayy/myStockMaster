@@ -125,7 +125,7 @@ class RevenueReports extends Component
             ], $options);
             $this->revenueData = $generateRevenueReportAction($options);
         } catch (Exception $exception) {
-            session()->flash('error', 'Failed to load revenue report: ' . $exception->getMessage());
+            session()->flash('error', __('Failed to load revenue report: :message', ['message' => $exception->getMessage()]));
             $this->revenueData = [];
         }
     }
@@ -150,7 +150,7 @@ class RevenueReports extends Component
                 default => $this->exportJSON($filename),
             };
         } catch (Exception $exception) {
-            session()->flash('error', 'Failed to export report: ' . $exception->getMessage());
+            session()->flash('error', __('Failed to export report: :message', ['message' => $exception->getMessage()]));
         }
     }
 
@@ -205,7 +205,7 @@ class RevenueReports extends Component
             $output = fopen('php://output', 'w');
 
             // Write headers
-            fputcsv($output, ['Date', 'Total Revenue', 'Total Sales', 'Average Order Value']);
+            fputcsv($output, [__('Date'), __('Total Revenue'), __('Total Sales'), __('Average Order Value')]);
 
             $generator = function () {
                 if (isset($this->revenueData['time_breakdown'])) {
@@ -254,13 +254,13 @@ class RevenueReports extends Component
             'labels' => $labels,
             'datasets' => [
                 [
-                    'label' => 'Revenue',
+                    'label' => __('Revenue'),
                     'data' => $revenues,
                     'borderColor' => 'rgb(59, 130, 246)',
                     'backgroundColor' => 'rgba(59, 130, 246, 0.1)',
                 ],
                 [
-                    'label' => 'Sales Count',
+                    'label' => __('Sales Count'),
                     'data' => $sales,
                     'borderColor' => 'rgb(16, 185, 129)',
                     'backgroundColor' => 'rgba(16, 185, 129, 0.1)',

@@ -15,7 +15,7 @@
         <div class="row">
             <div class="col-xs-12">
                 <div style="text-align: center;margin-bottom: 25px;">
-                    <img width="180" src="{{ public_path('images/logo-dark.png') }}" alt="Logo">
+                    <img width="180" src="{{ public_path('images/logo-dark.png') }}" alt="{{ __('Logo') }}">
                     <h4 style="margin-bottom: 20px;">
                         <span>{{ __('Reference') }}::</span> <strong>{{ $sale_return->reference }}</strong>
                     </h4>
@@ -25,7 +25,7 @@
                         <div class="row mb-4">
                             <div class="col-xs-4 mb-3 mb-md-0">
                                 <h4 class="mb-2" style="border-bottom: 1px solid #dddddd;padding-bottom: 10px;">
-                                    Company Info:</h4>
+                                    {{ __('Company Info:') }}</h4>
                                 <div><strong> {{ settings()->company_name ?? config('app.name') }}</strong></div>
                                 <div>{{ settings()->company_address }}</div>
                                 @if (settings()->show_email == true)
@@ -36,7 +36,7 @@
 
                             <div class="col-xs-4 mb-3 mb-md-0">
                                 <h4 class="mb-2" style="border-bottom: 1px solid #dddddd;padding-bottom: 10px;">
-                                    Customer Info:</h4>
+                                    {{ __('Customer Info:') }}</h4>
                                 <div><strong>{{ $customer->name }}</strong></div>
                                 @if (settings()->show_address == true)
                                     <div>{{ $customer->address }}</div>
@@ -49,7 +49,7 @@
 
                             <div class="col-xs-4 mb-3 mb-md-0">
                                 <h4 class="mb-2" style="border-bottom: 1px solid #dddddd;padding-bottom: 10px;">
-                                    Invoice Info:</h4>
+                                    {{ __('Invoice Info:') }}</h4>
                                 <div>{{ __('Reference') }}: <strong>{{ $sale_return->reference }}</strong></div>
                                 <div>{{ __('Date') }}:
                                     {{ format_date($sale_return->date) }}</div>
@@ -153,8 +153,7 @@
                         </div>
                         <div class="row" style="margin-top: 25px;">
                             <div class="col-xs-12">
-                                <p style="font-style: italic;text-align: center"> {{ settings()->company_name ?? config('app.name') }} &copy;
-                                    {{ date('Y') }}.</p>
+                                <p style="font-style: italic;text-align: center"> {{ __(':param_1 &copy; :param_2.', ['param_1' => settings()->company_name ?? config('app.name'), 'param_2' => date('Y')]) }}</p>
                             </div>
                         </div>
                     </div>

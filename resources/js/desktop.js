@@ -1,3 +1,4 @@
+import i18next from 'i18next';
 /**
  * Desktop-specific JavaScript functionality for MyStockMaster
  */
@@ -46,7 +47,7 @@ class DesktopApp {
         // Promise rejection handler
         window.addEventListener('unhandledrejection', (event) => {
             this.handleJavaScriptError({
-                message: `Unhandled Promise Rejection: ${event.reason}`,
+                message: i18next.t('Unhandled Promise Rejection: {{0}}', { 0: event.reason }),
                 source: 'Promise',
                 stack: event.reason && event.reason.stack ? event.reason.stack : null,
                 userAgent: navigator.userAgent,
@@ -58,7 +59,7 @@ class DesktopApp {
         if (window.Livewire) {
             window.Livewire.on('error', (error) => {
                 this.handleJavaScriptError({
-                    message: `Livewire Error: ${error.message || error}`,
+                    message: i18next.t('Livewire Error: {{0}}', { 0: error.message || error }),
                     source: 'Livewire',
                     stack: error.stack || null,
                     userAgent: navigator.userAgent,
@@ -216,7 +217,7 @@ class DesktopApp {
             }
         } catch (error) {
             console.error('Shortcut execution failed:', error);
-            this.showNotification('Error', 'Shortcut execution failed', 'error');
+            this.showNotification(i18next.t('Error'), i18next.t('Shortcut execution failed'), 'error');
         }
     }
 
@@ -246,7 +247,7 @@ class DesktopApp {
                 break;
             default:
                 if (result.message) {
-                    this.showNotification('Action Complete', result.message, 'success');
+                    this.showNotification(i18next.t('Action Complete'), result.message, 'success');
                 }
         }
     }
@@ -367,7 +368,7 @@ class DesktopApp {
 
     // Application functions
     async syncData() {
-        this.showLoadingState('Syncing data...');
+        this.showLoadingState(i18next.t('Syncing data...'));
         
         try {
             if (window.Livewire) {
@@ -375,9 +376,9 @@ class DesktopApp {
                 window.Livewire.dispatch('syncData');
             }
             
-            this.showNotification('Sync Complete', 'Data synchronized successfully', 'success');
+            this.showNotification(i18next.t('Sync Complete'), i18next.t('Data synchronized successfully'), 'success');
         } catch (error) {
-            this.showNotification('Sync Failed', 'Failed to sync data', 'error');
+            this.showNotification(i18next.t('Sync Failed'), i18next.t('Failed to sync data'), 'error');
         } finally {
             this.hideLoadingState();
         }
@@ -385,8 +386,8 @@ class DesktopApp {
 
     toggleOfflineMode() {
         const isOffline = document.body.classList.toggle('offline-mode');
-        const message = isOffline ? 'Switched to offline mode' : 'Switched to online mode';
-        this.showNotification('Mode Changed', message, 'info');
+        const message = isOffline ? i18next.t('Switched to offline mode') : i18next.t('Switched to online mode');
+        this.showNotification(i18next.t('Mode Changed'), message, 'info');
         
         // Update UI elements
         this.updateOfflineIndicators(isOffline);
@@ -395,7 +396,7 @@ class DesktopApp {
     updateOfflineIndicators(isOffline) {
         const indicators = document.querySelectorAll('[data-offline-indicator]');
         indicators.forEach(indicator => {
-            indicator.textContent = isOffline ? 'Offline' : 'Online';
+            indicator.textContent = isOffline ? i18next.t('Offline') : i18next.t('Online');
             indicator.className = isOffline ? 'text-red-500' : 'text-green-500';
         });
     }
@@ -408,7 +409,7 @@ class DesktopApp {
     }
 
     async clearCache() {
-        this.showLoadingState('Clearing cache...');
+        this.showLoadingState(i18next.t('Clearing cache...'));
         
         try {
             // Clear browser cache
@@ -421,9 +422,9 @@ class DesktopApp {
             localStorage.clear();
             sessionStorage.clear();
             
-            this.showNotification('Cache Cleared', 'All caches cleared successfully', 'success');
+            this.showNotification(i18next.t('Cache Cleared'), i18next.t('All caches cleared successfully'), 'success');
         } catch (error) {
-            this.showNotification('Clear Failed', 'Failed to clear cache', 'error');
+            this.showNotification(i18next.t('Clear Failed'), i18next.t('Failed to clear cache'), 'error');
         } finally {
             this.hideLoadingState();
         }
@@ -718,10 +719,10 @@ class DesktopApp {
 
             const result = await response.json();
             if (result.success) {
-                this.showNotification('Files Processed', `${files.length} files processed successfully`, 'success');
+                this.showNotification(i18next.t('Files Processed'), i18next.t('{{count}} files processed successfully', { count: files.length }), 'success');
             }
         } catch (error) {
-            this.showNotification('File Error', 'Failed to process dropped files', 'error');
+            this.showNotification(i18next.t('File Error'), i18next.t('Failed to process dropped files'), 'error');
         }
     }
 

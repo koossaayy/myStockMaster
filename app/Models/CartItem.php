@@ -160,7 +160,7 @@ class CartItem extends Model
     {
         $conditions = $this->conditions ?? [];
         $conditions[] = array_merge([
-            'name' => 'Condition',
+            'name' => __('Condition'),
             'type' => 'fixed',
             'value' => 0,
             'order' => 0,

@@ -59,7 +59,7 @@ class UserController extends Controller
         $user = User::query()->find($id);
 
         if ($user === null) {
-            return new \Illuminate\Http\JsonResponse(['message' => 'User not found'], 404);
+            return new \Illuminate\Http\JsonResponse(['message' => __('User not found')], 404);
         }
 
         return new UserResource($user);
@@ -84,6 +84,6 @@ class UserController extends Controller
         $user = User::query()->findOrFail($id);
         $user->delete();
 
-        return new \Illuminate\Http\JsonResponse(['message' => 'User deleted successfully']);
+        return new \Illuminate\Http\JsonResponse(['message' => __('User deleted successfully')]);
     }
 }

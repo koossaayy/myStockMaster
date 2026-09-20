@@ -6,53 +6,53 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
             </svg>
         </div>
-        <h3 class="text-2xl font-bold text-orange-900 font-display">System Configuration</h3>
-        <p class="mt-2 text-orange-600">Fine-tune your stock management system settings for optimal performance.</p>
+        <h3 class="text-2xl font-bold text-orange-900 font-display">{{ __('System Configuration') }}</h3>
+        <p class="mt-2 text-orange-600">{{ __('Fine-tune your stock management system settings for optimal performance.') }}</p>
     </div>
 
     <div class="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-2">
         <div>
-            <label for="currency" class="block text-sm font-semibold text-orange-700 mb-2">Currency *</label>
+            <label for="currency" class="block text-sm font-semibold text-orange-700 mb-2">{{ __('Currency *') }}</label>
             <x-select wire:model="currency" id="currency" 
                     class="block w-full rounded-xl border-orange-300 shadow-sm focus:border-orange-500 focus:ring-orange-500 sm:text-sm transition-colors duration-200 px-4 py-3 border">
-                <option value="">Select currency...</option>
-                <option value="USD">🇺🇸 US Dollar ($)</option>
-                <option value="EUR">🇪🇺 Euro (€)</option>
-                <option value="GBP">🇬🇧 British Pound (£)</option>
-                <option value="JPY">🇯🇵 Japanese Yen (¥)</option>
-                <option value="CAD">🇨🇦 Canadian Dollar (C$)</option>
-                <option value="AUD">🇦🇺 Australian Dollar (A$)</option>
-                <option value="MXN">🇲🇽 Mexican Peso ($)</option>
-                <option value="BRL">🇧🇷 Brazilian Real (R$)</option>
+                <option value="">{{ __('Select currency...') }}</option>
+                <option value="USD">{{ __('🇺🇸 US Dollar ($)') }}</option>
+                <option value="EUR">{{ __('🇪🇺 Euro (€)') }}</option>
+                <option value="GBP">{{ __('🇬🇧 British Pound (£)') }}</option>
+                <option value="JPY">{{ __('🇯🇵 Japanese Yen (¥)') }}</option>
+                <option value="CAD">{{ __('🇨🇦 Canadian Dollar (C$)') }}</option>
+                <option value="AUD">{{ __('🇦🇺 Australian Dollar (A$)') }}</option>
+                <option value="MXN">{{ __('🇲🇽 Mexican Peso ($)') }}</option>
+                <option value="BRL">{{ __('🇧🇷 Brazilian Real (R$)') }}</option>
             </x-select>
             @error('currency') <span class="text-red-600 text-sm mt-1 block">{{ $message }}</span> @enderror
         </div>
 
         <div>
-            <label for="timezone" class="block text-sm font-semibold text-orange-700 mb-2">Timezone *</label>
+            <label for="timezone" class="block text-sm font-semibold text-orange-700 mb-2">{{ __('Timezone *') }}</label>
             <x-select wire:model="timezone" id="timezone" 
                     class="block w-full rounded-xl border-orange-300 shadow-sm focus:border-orange-500 focus:ring-orange-500 sm:text-sm transition-colors duration-200 px-4 py-3 border">
-                <option value="">Select timezone...</option>
-                <option value="America/New_York">🇺🇸 Eastern Time</option>
-                <option value="America/Chicago">🇺🇸 Central Time</option>
-                <option value="America/Denver">🇺🇸 Mountain Time</option>
-                <option value="America/Los_Angeles">🇺🇸 Pacific Time</option>
-                <option value="Europe/London">🇬🇧 London</option>
-                <option value="Europe/Paris">🇫🇷 Paris</option>
-                <option value="Europe/Berlin">🇩🇪 Berlin</option>
-                <option value="Asia/Tokyo">🇯🇵 Tokyo</option>
-                <option value="Australia/Sydney">🇦🇺 Sydney</option>
-                <option value="UTC">🌍 UTC</option>
+                <option value="">{{ __('Select timezone...') }}</option>
+                <option value="America/New_York">{{ __('🇺🇸 Eastern Time') }}</option>
+                <option value="America/Chicago">{{ __('🇺🇸 Central Time') }}</option>
+                <option value="America/Denver">{{ __('🇺🇸 Mountain Time') }}</option>
+                <option value="America/Los_Angeles">{{ __('🇺🇸 Pacific Time') }}</option>
+                <option value="Europe/London">{{ __('🇬🇧 London') }}</option>
+                <option value="Europe/Paris">{{ __('🇫🇷 Paris') }}</option>
+                <option value="Europe/Berlin">{{ __('🇩🇪 Berlin') }}</option>
+                <option value="Asia/Tokyo">{{ __('🇯🇵 Tokyo') }}</option>
+                <option value="Australia/Sydney">{{ __('🇦🇺 Sydney') }}</option>
+                <option value="UTC">{{ __('🌍 UTC') }}</option>
             </x-select>
             @error('timezone') <span class="text-red-600 text-sm mt-1 block">{{ $message }}</span> @enderror
         </div>
 
         <div>
-            <label for="items_per_page" class="block text-sm font-semibold text-orange-700 mb-2">Items Per Page *</label>
+            <label for="items_per_page" class="block text-sm font-semibold text-orange-700 mb-2">{{ __('Items Per Page *') }}</label>
             <input type="number" wire:model="items_per_page" id="items_per_page" min="5" max="100" 
                    class="block w-full rounded-xl border-orange-300 shadow-sm focus:border-orange-500 focus:ring-orange-500 sm:text-sm transition-colors duration-200 px-4 py-3 border"
                    placeholder="20">
-            <p class="mt-2 text-sm text-orange-500">Number of items to display per page</p>
+            <p class="mt-2 text-sm text-orange-500">{{ __('Number of items to display per page') }}</p>
             @error('items_per_page') <span class="text-red-600 text-sm mt-1 block">{{ $message }}</span> @enderror
         </div>
     </div>
@@ -66,7 +66,7 @@
             </div>
             <div class="ml-3">
                 <p class="text-sm text-orange-700">
-                    <strong>Pro tip:</strong> You can always change these settings later from your admin dashboard under Settings > General.
+                    <strong>{{ __('Pro tip:') }}</strong> {{ __('You can always change these settings later from your admin dashboard under Settings > General.') }}
                 </p>
             </div>
         </div>

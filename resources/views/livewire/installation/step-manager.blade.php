@@ -13,10 +13,10 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                     </svg>
                 </div>
-                <h1 class="text-3xl font-bold text-green-900 mb-4">Installation Skipped</h1>
-                <p class="text-green-600 mb-6">The installation process has been bypassed via configuration.</p>
+                <h1 class="text-3xl font-bold text-green-900 mb-4">{{ __('Installation Skipped') }}</h1>
+                <p class="text-green-600 mb-6">{{ __('The installation process has been bypassed via configuration.') }}</p>
                 <a href="{{ route('dashboard') }}" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-500 text-white font-semibold rounded-xl hover:from-green-600 hover:to-emerald-600 transition-all duration-200">
-                    Go to Dashboard
+                    {{ __('Go to Dashboard') }}
                 </a>
             </div>
             </div>
@@ -35,10 +35,10 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7"></path>
                     </svg>
                 </div>
-                <h1 class="text-3xl font-bold text-blue-900 mb-4">Already Installed</h1>
-                <p class="text-blue-600 mb-6">{{ config('app.name', 'Stock Management System') }} has already been installed and configured.</p>
+                <h1 class="text-3xl font-bold text-blue-900 mb-4">{{ __('Already Installed') }}</h1>
+                <p class="text-blue-600 mb-6">{{ __(':param_1 has already been installed and configured.', ['param_1' => config('app.name', 'Stock Management System')]) }}</p>
                 <a href="{{ route('dashboard') }}" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-indigo-500 text-white font-semibold rounded-xl hover:from-blue-600 hover:to-indigo-600 transition-all duration-200">
-                    Go to Dashboard
+                    {{ __('Go to Dashboard') }}
                 </a>
             </div>
             </div>
@@ -53,7 +53,7 @@
                 @if($isDesktopMode)
                     <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-indigo-100 text-indigo-700 mb-4">
                         <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20"><path d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5z"/></svg>
-                        Desktop Mode
+                        {{ __('Desktop Mode') }}
                     </div>
                 @endif
         
@@ -76,17 +76,16 @@
                         @php
                             $stepIndex = $index + 1;
                             $label = match($stepName) {
-                                'persona' => 'Persona',
-                                'requirements' => 'Requirements',
-                                'database' => 'Database',
-                                'company' => 'Company',
-                                'settings' => 'Settings',
-                                'admin' => 'Admin',
-                                'demo' => 'Demo Data',
-                                'finish' => 'Finish',
+                                'persona' => __('Persona'),
+                                'requirements' => __('Requirements'),
+                                'database' => __('Database'),
+                                'company' => __('Company'),
+                                'settings' => __('Settings'),
+                                'admin' => __('Admin'),
+                                'demo' => __('Demo Data'),
+                                'finish' => __('Finish'),
                                 default => ucfirst($stepName),
-                            };
-                        @endphp
+                            };@endphp
                         <button wire:click="goToStep({{ $stepIndex }})" 
                                 class="{{ $currentStep >= $stepIndex ? 'text-orange-600' : 'text-orange-400' }} hover:text-orange-700 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-orange-500 rounded px-2 py-1">
                             {{ $label }}
@@ -133,7 +132,7 @@
                         </div>
                         <div class="ml-3">
                             <p class="text-sm text-red-700">
-                                Please fix the following errors:
+                                {{ __('Please fix the following errors:') }}
                                 <ul class="mt-1 list-disc list-inside text-sm text-red-700">
                                     @foreach ($errors->all() as $error)
                                         <li>{{ $error }}</li>

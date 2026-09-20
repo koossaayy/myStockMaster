@@ -69,9 +69,9 @@
             <table class="table-sm">
                <thead>
                   <tr>
-                     <th>Achat</th>
-                     <th>Payé par</th>
-                     <th>Montant</th>
+                     <th>{{ __('Achat') }}</th>
+                     <th>{{ __('Payé par') }}</th>
+                     <th>{{ __('Montant') }}</th>
                   </tr>
                </thead>
                <tbody>

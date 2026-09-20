@@ -1,3 +1,4 @@
+import i18next from 'i18next';
 // Custom Alert System for myStockMaster
 // Handles alert events dispatched from Livewire components
 
@@ -14,11 +15,11 @@ document.addEventListener('DOMContentLoaded', function () {
         const { message, options = {} } = event.detail;
 
         showConfirm({
-            title: options.title || 'Are you sure?',
+            title: options.title || i18next.t('Are you sure?'),
             text: message,
             icon: options.icon || 'warning',
-            confirmButtonText: options.confirmButtonText || 'Yes, delete it!',
-            cancelButtonText: options.cancelButtonText || 'Cancel',
+            confirmButtonText: options.confirmButtonText || i18next.t('Yes, delete it!'),
+            cancelButtonText: options.cancelButtonText || i18next.t('Cancel'),
             confirmButtonColor: options.confirmButtonColor,
             cancelButtonColor: options.cancelButtonColor,
             ...options,
@@ -46,11 +47,11 @@ document.addEventListener('DOMContentLoaded', function () {
 function showConfirm(options = {}) {
     return new Promise((resolve) => {
         const {
-            title = 'Are you sure?',
+            title = i18next.t('Are you sure?'),
             text = '',
             icon = 'warning',
-            confirmButtonText = 'Confirm',
-            cancelButtonText = 'Cancel',
+            confirmButtonText = i18next.t('Confirm'),
+            cancelButtonText = i18next.t('Cancel'),
             confirmButtonColor = null,
             cancelButtonColor = null,
         } = options;

@@ -258,7 +258,7 @@ final class GenerateRevenueReportAction
             ->get()
             ->map(fn ($item) => [
                 'product_id' => $item->product_id,
-                'product_name' => $item->product->name ?? 'Unknown Product',
+                'product_name' => $item->product->name ?? __('Unknown Product'),
                 'total_quantity' => (int) $item->total_quantity,
                 'revenue' => (float) $item->revenue,
                 'order_count' => (int) $item->order_count,

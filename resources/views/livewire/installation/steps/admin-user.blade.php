@@ -8,13 +8,13 @@
                 </path>
             </svg>
         </div>
-        <h3 class="text-2xl font-bold text-orange-900 font-display">Create Admin Account</h3>
-        <p class="mt-2 text-orange-600">Set up your administrator account to manage your stock management system.</p>
+        <h3 class="text-2xl font-bold text-orange-900 font-display">{{ __('Create Admin Account') }}</h3>
+        <p class="mt-2 text-orange-600">{{ __('Set up your administrator account to manage your stock management system.') }}</p>
     </div>
 
     <div class="space-y-6">
         <div>
-            <label for="admin_email" class="block text-sm font-semibold text-orange-700 mb-2">Admin Email *</label>
+            <label for="admin_email" class="block text-sm font-semibold text-orange-700 mb-2">{{ __('Admin Email *') }}</label>
             <input type="email" wire:model="admin_email" id="admin_email"
                 class="block w-full rounded-xl border-orange-300 shadow-sm focus:border-orange-500 focus:ring-orange-500 sm:text-sm transition-colors duration-200 px-4 py-3 border"
                 placeholder="{{ __('e.g., admin@company.com') }}">
@@ -24,7 +24,7 @@
         </div>
 
         <div>
-            <label for="admin_password" class="block text-sm font-semibold text-orange-700 mb-2">Password *</label>
+            <label for="admin_password" class="block text-sm font-semibold text-orange-700 mb-2">{{ __('Password *') }}</label>
             <input type="password" wire:model="admin_password" id="admin_password"
                 class="block w-full rounded-xl border-orange-300 shadow-sm focus:border-orange-500 focus:ring-orange-500 sm:text-sm transition-colors duration-200 px-4 py-3 border"
                 placeholder="{{ __('Create a strong password') }}">
@@ -36,8 +36,7 @@
         </div>
 
         <div>
-            <label for="admin_password_confirmation" class="block text-sm font-semibold text-orange-700 mb-2">Confirm
-                Password *</label>
+            <label for="admin_password_confirmation" class="block text-sm font-semibold text-orange-700 mb-2">{{ __('Confirm Password *') }}</label>
             <input type="password" wire:model="admin_password_confirmation" id="admin_password_confirmation"
                 class="block w-full rounded-xl border-orange-300 shadow-sm focus:border-orange-500 focus:ring-orange-500 sm:text-sm transition-colors duration-200 px-4 py-3 border"
                 placeholder="{{ __('Repeat your password') }}">
@@ -57,8 +56,7 @@
                 </div>
                 <div class="ml-3">
                     <p class="text-sm text-amber-700">
-                        <strong>Important:</strong> This account will have full access to manage your stock management
-                        system, including inventory, orders, and business data.
+                        <strong>{{ __('Important:') }}</strong> {{ __('This account will have full access to manage your stock management system, including inventory, orders, and business data.') }}
                     </p>
                 </div>
             </div>

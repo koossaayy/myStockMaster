@@ -4,7 +4,7 @@
         <div class="flex items-center gap-2">
             <x-button success type="button" wire:click.throttle="store" wire:loading.attr="disabled" :disabled="count($products) == 0">
                 <i class="fas fa-check mr-2"></i>
-                {{ __('Complete Transfer') }} (Ctrl+S)
+                {{ __(':param_1 (Ctrl+S)', ['param_1' => __('Complete Transfer')]) }}
             </x-button>
         </div>
     </x-theme.breadcrumb>

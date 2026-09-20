@@ -220,7 +220,7 @@ class ManageCostTrackingAction
             $opportunities[] = [
                 'type' => 'cogs_reduction',
                 'priority' => 'high',
-                'description' => 'COGS is above target range (35%). Consider supplier negotiation or menu optimization.',
+                'description' => __('COGS is above target range (35%). Consider supplier negotiation or menu optimization.'),
                 'potential_savings' => ($cogsAnalysis['cogs_percentage'] - 30) / 100 * $cogsAnalysis['total_revenue'],
             ];
         }
@@ -232,7 +232,7 @@ class ManageCostTrackingAction
             $opportunities[] = [
                 'type' => 'wastage_reduction',
                 'priority' => 'medium',
-                'description' => 'Food wastage exceeds 2% of revenue. Implement better inventory management.',
+                'description' => __('Food wastage exceeds 2% of revenue. Implement better inventory management.'),
                 'potential_savings' => $wastageAnalysis['total_wastage'] * 0.5, // Assume 50% reduction possible
             ];
         }
@@ -269,8 +269,8 @@ class ManageCostTrackingAction
             $alerts[] = [
                 'level' => 'critical',
                 'type' => 'cogs',
-                'message' => 'COGS exceeds 40% - immediate action required',
-                'action' => 'Review supplier contracts and menu pricing',
+                'message' => __('COGS exceeds 40% - immediate action required'),
+                'action' => __('Review supplier contracts and menu pricing'),
             ];
         }
 
@@ -280,8 +280,8 @@ class ManageCostTrackingAction
             $alerts[] = [
                 'level' => 'warning',
                 'type' => 'wastage',
-                'message' => 'Food wastage exceeds 5% of revenue',
-                'action' => 'Implement inventory management improvements',
+                'message' => __('Food wastage exceeds 5% of revenue'),
+                'action' => __('Implement inventory management improvements'),
             ];
         }
 
@@ -296,17 +296,17 @@ class ManageCostTrackingAction
         $cogsAnalysis = $this->calculateCogsAnalysis($startDate, $endDate);
 
         if ($cogsAnalysis['cogs_percentage'] > 35) {
-            $recommendations[] = 'Negotiate better supplier terms or find alternative suppliers';
-            $recommendations[] = 'Review menu pricing to improve margins';
-            $recommendations[] = 'Optimize portion sizes to reduce food costs';
+            $recommendations[] = __('Negotiate better supplier terms or find alternative suppliers');
+            $recommendations[] = __('Review menu pricing to improve margins');
+            $recommendations[] = __('Optimize portion sizes to reduce food costs');
         }
 
         $wastageAnalysis = $this->calculateWastageMetrics($startDate, $endDate);
 
         if ($wastageAnalysis['wastage_percentage_of_revenue'] > 2) {
-            $recommendations[] = 'Implement first-in-first-out (FIFO) inventory system';
-            $recommendations[] = 'Train staff on proper food storage and handling';
-            $recommendations[] = 'Review menu planning to reduce overproduction';
+            $recommendations[] = __('Implement first-in-first-out (FIFO) inventory system');
+            $recommendations[] = __('Train staff on proper food storage and handling');
+            $recommendations[] = __('Review menu planning to reduce overproduction');
         }
 
         return $recommendations;

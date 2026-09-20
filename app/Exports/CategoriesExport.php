@@ -57,8 +57,8 @@ class CategoriesExport implements FromQuery, WithDrawings, WithHeadings, WithMap
     public function drawings(): array
     {
         $drawing = new \PhpOffice\PhpSpreadsheet\Worksheet\Drawing;
-        $drawing->setName('Logo');
-        $drawing->setDescription('Logo');
+        $drawing->setName(__('Logo'));
+        $drawing->setDescription(__('Logo'));
         $drawing->setPath(public_path('images/logo.png'));
         $drawing->setCoordinates('A4');
         $drawing->setHeight(90);

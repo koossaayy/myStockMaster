@@ -60,7 +60,7 @@
                                     <p class="invoice-number"><b>{{ __('Reference No') }}: </b>
                                         {{ $data->reference }}
                                     </p>
-                                    <p class="invoice-date"><b>Date: </b>
+                                    <p class="invoice-date"><b>{{ __('Date:') }} </b>
                                         {{ format_date($data->date) }}
                                     </p>
                                 </div>
@@ -114,10 +114,10 @@
                         </div>
                     </div>
                     <div class="body-shape1">
-                        <img src="{{ asset('assets/img/template/photography_shape.svg') }}" alt="shape">
+                        <img src="{{ asset('assets/img/template/photography_shape.svg') }}" alt="{{ __('shape') }}">
                     </div>
                     <div class="body-shape2">
-                        <img src="{{ asset('assets/img/template/photography_footer.svg') }}" alt="shape">
+                        <img src="{{ asset('assets/img/template/photography_footer.svg') }}" alt="{{ __('shape') }}">
                     </div>
                     <div class="invoice-buttons">
                         <button class="print_btn">

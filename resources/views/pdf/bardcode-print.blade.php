@@ -19,10 +19,10 @@
 
                     </p>
                     {{-- read $barcode as svg image --}}
-                    <img src="data:image/svg+xml;base64,{{ base64_encode($barcode['barcode']) }}" alt="barcode" />
+                    <img src="data:image/svg+xml;base64,{{ base64_encode($barcode['barcode']) }}" alt="{{ __('barcode') }}" />
 
                     <p style="font-size: 15px;color: #000;font-weight: bold;">
-                        {{ __('Price') }}: {{ $barcode['price'] }}DH
+                        {{ __(':param_1: :param_2DH', ['param_1' => __('Price'), 'param_2' => $barcode['price']]) }}
                     </p>
                 </div>
             @endforeach

@@ -100,7 +100,7 @@ class KpiTracking extends Component
             // Load comparison data
             $this->loadComparisonData($dateFrom, $dateTo);
         } catch (Exception $exception) {
-            session()->flash('error', 'Failed to load KPI data: ' . $exception->getMessage());
+            session()->flash('error', __('Failed to load KPI data: :message', ['message' => $exception->getMessage()]));
         }
     }
 
@@ -191,7 +191,7 @@ class KpiTracking extends Component
                 'Content-Type' => 'application/json',
             ]);
         } catch (Exception $exception) {
-            session()->flash('error', 'Failed to export KPI data: ' . $exception->getMessage());
+            session()->flash('error', __('Failed to export KPI data: :message', ['message' => $exception->getMessage()]));
         }
     }
 

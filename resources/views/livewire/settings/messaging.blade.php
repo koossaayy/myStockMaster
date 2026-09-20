@@ -9,7 +9,7 @@
                         class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
                         <option value="">{{ __('Select Message Type') }}</option>
                         <option value="whatsapp">WhatsApp</option>
-                        <option value="telegram">Telegram</option>
+                        <option value="telegram">{{ __('Telegram') }}</option>
                     </x-select>
                 </div>
                 @if ($type == 'telegram')
@@ -96,24 +96,24 @@
                 <div class="py-3">
                     <ul class="border rounded-md divide-y">
                         <li class="flex justify-between items-center py-2 px-3">
-                            <span class="font-bold">Product Information</span>
+                            <span class="font-bold">{{ __('Product Information') }}</span>
                             <button wire:click="fillMessage('productMessage')"
                                 class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded-sm">
-                                Use
+                                {{ __('Use') }}
                             </button>
                         </li>
                         <li class="flex justify-between items-center py-2 px-3">
-                            <span class="font-bold">Client Message</span>
+                            <span class="font-bold">{{ __('Client Message') }}</span>
                             <button wire:click="fillMessage('clientMessage')"
                                 class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded-sm">
-                                Use
+                                {{ __('Use') }}
                             </button>
                         </li>
                         <li class="flex justify-between items-center py-2 px-3">
-                            <span class="font-bold">Empty Message</span>
+                            <span class="font-bold">{{ __('Empty Message') }}</span>
                             <button wire:click="fillMessage('')"
                                 class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded-sm">
-                                Use
+                                {{ __('Use') }}
                             </button>
                         </li>
                     </ul>
@@ -134,7 +134,7 @@
                             <li class="flex justify-between items-center py-2 px-3">
                                 <span class="font-bold">{{ $product->name }}</span>
                                 <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded-sm"
-                                    wire:click="insertProduct({{ $product->id }})">Use</button>
+                                    wire:click="insertProduct({{ $product->id }})">{{ __('Use') }}</button>
                             </li>
                         @endforeach
                     </ul>

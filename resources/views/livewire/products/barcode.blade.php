@@ -10,7 +10,7 @@
 
             <div class="w-full px-2">
                 <x-validation-errors class="mb-4" :errors="$errors" />
-                <x-select-list :options="$this->warehouses" wire:model.live="warehouse_id" label="Warehouse" required
+                <x-select-list :options="$this->warehouses" wire:model.live="warehouse_id" label="{{ __('Warehouse') }}" required
                     class="mb-3" />
                 <x-table>
                     <x-slot name="thead">
@@ -18,7 +18,7 @@
                         <x-table.th>{{ __('Price') }}</x-table.th>
                         <x-table.th>
                             {{ __('Quantity') }} <i class="bi bi-question-circle-fill text-info" data-toggle="tooltip"
-                                data-placement="top" title="Max Quantity: 100"></i>
+                                data-placement="top" title="{{ __('Max Quantity: 100') }}"></i>
                         </x-table.th>
                         <x-table.th>{{ __('Size') }}</x-table.th>
                         <x-table.th></x-table.th>

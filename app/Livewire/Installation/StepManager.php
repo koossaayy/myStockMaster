@@ -251,7 +251,7 @@ class StepManager extends Component
         // PHP version
         $phpOk = version_compare(PHP_VERSION, '8.2.0', '>=');
         $this->preflightResults['php_version'] = [
-            'label' => 'PHP Version (≥ 8.2)',
+            'label' => __('PHP Version (≥ 8.2)'),
             'value' => PHP_VERSION,
             'passed' => $phpOk,
         ];
@@ -266,12 +266,12 @@ class StepManager extends Component
         foreach ($requiredExtensions as $requiredExtension) {
             $loaded = extension_loaded(strtolower($requiredExtension));
             $this->preflightResults['ext_' . strtolower($requiredExtension)] = [
-                'label' => $requiredExtension . ' Extension',
+                'label' => __(':requiredExtension Extension', ['requiredExtension' => $requiredExtension]),
                 'passed' => $loaded,
             ];
 
             if (! $loaded) {
-                $this->requirementErrors[] = sprintf("PHP extension '%s' is required but not loaded.", $requiredExtension);
+                $this->requirementErrors[] = sprintf(__("PHP extension '%s' is required but not loaded."), $requiredExtension);
             }
         }
 
@@ -287,25 +287,25 @@ class StepManager extends Component
         foreach ($writableDirs as $path => $label) {
             $writable = is_writable($path);
             $this->preflightResults['dir_' . str_replace('/', '_', $label)] = [
-                'label' => 'Directory: ' . $label,
+                'label' => __('Directory: :label', ['label' => $label]),
                 'passed' => $writable,
             ];
 
             if (! $writable) {
-                $this->requirementErrors[] = sprintf("Directory '%s' is not writable.", $label);
+                $this->requirementErrors[] = sprintf(__("Directory '%s' is not writable."), $label);
             }
         }
 
         // .env file
         $envExists = file_exists(base_path('.env'));
         $this->preflightResults['env_file'] = [
-            'label' => '.env file exists',
+            'label' => __('.env file exists'),
             'passed' => $envExists,
             'hint' => $envExists ? null : 'Run: cp .env.example .env && php artisan key:generate',
         ];
 
         if (! $envExists) {
-            $this->requirementErrors[] = '.env file not found. Copy .env.example to .env and run php artisan key:generate.';
+            $this->requirementErrors[] = __('.env file not found. Copy .env.example to .env and run php artisan key:generate.');
         }
 
         $this->preflightPassed = $this->requirementErrors === [];

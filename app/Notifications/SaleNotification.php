@@ -13,7 +13,7 @@ class SaleNotification extends BaseSystemNotification
 
     public function __construct(Sale $sale, string $channelType = 'mail')
     {
-        parent::__construct('Sale Details - ' . $sale->reference, $channelType);
+        parent::__construct(__('Sale Details - :reference', ['reference' => $sale->reference]), $channelType);
         $this->sale = $sale;
     }
 

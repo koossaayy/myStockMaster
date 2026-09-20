@@ -40,7 +40,7 @@
                                 <div><strong>{{ __('Name') }}:</strong> {{ $purchase->supplier->name }}</div>
                                 <div><strong>{{ __('Tax number') }}:</strong> {{ $purchase->tax_number }}</div>
                                 <div><strong>{{ __('Phone') }}:</strong> {{ $purchase->phone }}</div>
-                                <div><strong>{{ 'Address' }}:</strong> {{ $purchase->adress }}</div>
+                                <div><strong>{{ __('Address') }}:</strong> {{ $purchase->adress }}</div>
                                 <div><strong>{{ __('Email') }}:</strong> {{ $purchase->email }}</div>
                             </td>
                         </tr>

@@ -1,4 +1,4 @@
-<x-perfect-scrollbar as="nav" aria-label="main" wire:navigate:scroll class="flex flex-col flex-1 gap-1 px-3 py-4 md:gap-2 lg:gap-3">
+<x-perfect-scrollbar as="nav" aria-label="{{ __('main') }}" wire:navigate:scroll class="flex flex-col flex-1 gap-1 px-3 py-4 md:gap-2 lg:gap-3">
 
     <x-sidebar.link title="{{ __('Dashboard') }}" href="{{ route('dashboard') }}" :isActive="request()->routeIs('dashboard')" :icon="'<i class=\'fas fa-th-large w-5 h-5\'></i>'" />
 

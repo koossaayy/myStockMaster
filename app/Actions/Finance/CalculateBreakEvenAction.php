@@ -168,9 +168,9 @@ final class CalculateBreakEvenAction
         $breakEvenRatio = $currentMonthlySales / $breakEvenMonthlySales;
 
         $status = match (true) {
-            $breakEvenRatio >= 2.0 => 'excellent',
-            $breakEvenRatio >= 1.5 => 'good',
-            $breakEvenRatio >= 1.1 => 'marginal',
+            $breakEvenRatio >= 2.0 => __('excellent'),
+            $breakEvenRatio >= 1.5 => __('good'),
+            $breakEvenRatio >= 1.1 => __('marginal'),
             $breakEvenRatio >= 1.0 => 'break_even',
             default => 'below_break_even'
         };
@@ -217,19 +217,19 @@ final class CalculateBreakEvenAction
 
                 break;
 
-            case 'marginal':
+            case __('marginal'):
                 $recommendations[] = __('Marginally profitable. Build safety margin through cost optimization.');
                 $recommendations[] = __('Focus on customer retention and average sale value increase.');
 
                 break;
 
-            case 'good':
+            case __('good'):
                 $recommendations[] = __('Good performance above break-even. Maintain current operations.');
                 $recommendations[] = __('Consider strategic investments for growth.');
 
                 break;
 
-            case 'excellent':
+            case __('excellent'):
                 $recommendations[] = __('Excellent performance! Strong foundation for expansion.');
                 $recommendations[] = __('Evaluate opportunities for scaling operations.');
 

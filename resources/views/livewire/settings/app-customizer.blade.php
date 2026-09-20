@@ -24,11 +24,11 @@
                 <div>
                     <x-label for="font_family" :value="__('Font Family')" />
                     <x-select id="font_family" wire:model.blur="font_family" class="mt-1 w-full">
-                        <option value="'Inter', sans-serif">Inter</option>
-                        <option value="'Arial', sans-serif">Arial</option>
-                        <option value="'Georgia', serif">Georgia</option>
-                        <option value="'Courier New', monospace">Courier New</option>
-                        <option value="'Tahoma', sans-serif">Tahoma</option>
+                        <option value="'Inter', sans-serif">{{ __('Inter') }}</option>
+                        <option value="'Arial', sans-serif">{{ __('Arial') }}</option>
+                        <option value="'Georgia', serif">{{ __('Georgia') }}</option>
+                        <option value="'Courier New', monospace">{{ __('Courier New') }}</option>
+                        <option value="'Tahoma', sans-serif">{{ __('Tahoma') }}</option>
                     </x-select>
                     <p class="text-xs text-gray-500 mt-1">{{ __('Choose the default font family for the application interface.') }}</p>
                 </div>
@@ -42,12 +42,12 @@
                             A
                         </div>
                         <div>
-                            <h5 class="font-bold text-lg text-primary-500">Heading Example</h5>
-                            <p class="text-gray-600 text-sm">This is how your selected font family looks.</p>
+                            <h5 class="font-bold text-lg text-primary-500">{{ __('Heading Example') }}</h5>
+                            <p class="text-gray-600 text-sm">{{ __('This is how your selected font family looks.') }}</p>
                         </div>
                     </div>
                     <button type="button" class="px-4 py-2 text-white rounded-md text-sm font-medium transition-colors bg-primary-500 hover:bg-primary-600">
-                        Primary Button
+                        {{ __('Primary Button') }}
                     </button>
                 </div>
             </div>

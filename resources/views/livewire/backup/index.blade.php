@@ -57,7 +57,7 @@
                                         {{ basename($backup) }}
                                     </x-table.td>
                                     <x-table.td>
-                                        {{ Storage::size($backup) / 1000 }} KB
+                                        {{ __(':param_1 KB', ['param_1' => Storage::size($backup) / 1000]) }}
                                     </x-table.td>
                                     <x-table.td>
                                         {{ \Carbon\Carbon::createFromTimestamp(Storage::lastModified($backup))->format("d M Y \\a\\t h:i a") }}
@@ -71,7 +71,7 @@
                                                     </x-button>
                                                 </x-slot>
                                                 <x-slot name="content">
-                                                    <x-dropdown-link wire:click="downloadBackup('{{ $backup }}')" title="Download" wire:loading.attr="disabled">
+                                                    <x-dropdown-link wire:click="downloadBackup('{{ $backup }}')" title="{{ __('Download') }}" wire:loading.attr="disabled">
                                                         <i class="fas fa-download"></i>
                                                         {{ __('Download') }}
                                                     </x-dropdown-link>

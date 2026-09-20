@@ -324,7 +324,7 @@
                                                     {{ __('Inventory Turnover') }}
                                                 </div>
                                                 <div class="text-2xl font-bold text-gray-900">
-                                                    {{ number_format($efficiencyKpis['inventory_turnover'] ?? 0, 2) }}x
+                                                    {{ __(':param_1x', ['param_1' => number_format($efficiencyKpis['inventory_turnover'] ?? 0, 2)]) }}
                                                 </div>
                                             </div>
                                         </div>

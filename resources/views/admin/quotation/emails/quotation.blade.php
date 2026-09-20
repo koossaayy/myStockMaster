@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Quotation Details</title>
+    <title>{{ __('Quotation Details') }}</title>
     <link rel="stylesheet" href="{{ asset('print/bootstrap.min.css') }}">
 </head>
 <body>
@@ -13,7 +13,7 @@
     <div class="row">
         <div class="w-full px-4">
             <div style="text-align: center;margin-bottom: 25px;">
-                <img width="180" src="{{ asset('images/logo-dark.png') }}" alt="Logo">
+                <img width="180" src="{{ asset('images/logo-dark.png') }}" alt="{{ __('Logo') }}">
                 <h4 style="margin-bottom: 20px;">
                     <span>{{__('Reference')}}::</span> <strong>{{ $quotation->reference }}</strong>
                 </h4>
@@ -22,7 +22,7 @@
                 <div class="p-4">
                     <div class="flex flex-row mb-4">
                         <div class="col-md-6 mb-3 mb-md-0">
-                            <h4 class="mb-2" style="border-bottom: 1px solid #dddddd;padding-bottom: 10px;">Company Info:</h4>
+                            <h4 class="mb-2" style="border-bottom: 1px solid #dddddd;padding-bottom: 10px;">{{ __('Company Info:') }}</h4>
                             <div><strong> {{ settings()->company_name ?? config('app.name') }}</strong></div>
                             <div>{{ settings()->company_address }}</div>
                             @if (settings()->show_email == true)
@@ -32,7 +32,7 @@
                         </div>
 
                         <div class="col-md-6 mb-3 mb-md-0">
-                            <h4 class="mb-2" style="border-bottom: 1px solid #dddddd;padding-bottom: 10px;">Customer Info:</h4>
+                            <h4 class="mb-2" style="border-bottom: 1px solid #dddddd;padding-bottom: 10px;">{{ __('Customer Info:') }}</h4>
                             <div><strong>{{ $customer->name }}</strong></div>
                             <div>{{ $customer->address }}</div>
                             <div>{{__('Email')}}: {{ $customer->email }}</div>
@@ -44,7 +44,7 @@
                         <table class="table table-striped">
                             <thead>
                             <tr>
-                                <th class="align-middle">Product</th>
+                                <th class="align-middle">{{ __('Product') }}</th>
                                 <th class="align-middle">{{__('Net Unit Price')}}</th>
                                 <th class="align-middle">{{__('Quantity')}}</th>
                                 <th class="align-middle">{{__('Discount')}}</th>
@@ -110,7 +110,7 @@
                     </div>
                     <div class="row" style="margin-top: 25px;">
                         <div class="w-full px-4">
-                            <p style="font-style: italic;text-align: center"> {{ settings()->company_name ?? config('app.name') }} &copy; {{ date('Y') }}</p>
+                            <p style="font-style: italic;text-align: center"> {{ __(':param_1 &copy; :param_2', ['param_1' => settings()->company_name ?? config('app.name'), 'param_2' => date('Y')]) }}</p>
                         </div>
                     </div>
                 </div>

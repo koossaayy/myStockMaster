@@ -16,7 +16,7 @@
             @endif
 
             @if (!empty($breadcrumbs))
-                <nav class="w-full" aria-label="Breadcrumb">
+                <nav class="w-full" aria-label="{{ __('Breadcrumb') }}">
                     <ol class="flex items-center space-x-2">
                         @foreach ($breadcrumbs as $index => $breadcrumb)
                             <li class="flex items-center">

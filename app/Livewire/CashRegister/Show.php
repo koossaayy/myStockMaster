@@ -56,7 +56,7 @@ class Show extends Component
 
         $this->cheque_payment = SalePayment::query()->where([
             ['cash_register_id', $this->cashRegister->id],
-            ['payment_method', 'Cheque'],
+            ['payment_method', __('Cheque')],
         ])->sum('amount') / 100;
 
         $this->total_sale_return = SaleReturn::query()->where('cash_register_id', $this->cashRegister->id)

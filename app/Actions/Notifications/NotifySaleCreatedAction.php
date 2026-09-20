@@ -81,7 +81,7 @@ final readonly class NotifySaleCreatedAction
         if ($sale->customer && $sale->customer->phone) {
             $this->notificationService->sendSMS(
                 $sale->customer->phone,
-                sprintf('Your order #%s for %s has been confirmed. Thank you!', $sale->id, $sale->total_amount)
+                sprintf(__('Your order #%s for %s has been confirmed. Thank you!'), $sale->id, $sale->total_amount)
             );
         }
     }

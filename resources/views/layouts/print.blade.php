@@ -23,7 +23,7 @@
         <div class="flex justify-between items-start mb-8 pb-6 border-b border-gray-200">
             <div class="w-1/2">
                 @if(isset($logo) && $logo)
-                    <img src="{{ $logo }}" alt="Logo" class="h-16 object-contain mb-4">
+                    <img src="{{ $logo }}" alt="{{ __('Logo') }}" class="h-16 object-contain mb-4">
                 @endif
                 <h2 class="text-xl font-bold text-gray-900">{{ settings()->company_name ?? config('app.name') }}</h2>
                 <p class="text-sm text-gray-500 mt-1">{{ settings()->company_address }}</p>
@@ -41,8 +41,8 @@
 
         <!-- Print Footer -->
         <div class="mt-12 pt-8 border-t border-gray-200 text-center text-sm text-gray-500">
-            <p>{{ settings()->invoice_footer_text ?? 'Thank you for your business!' }}</p>
-            <p class="mt-1">{{ settings()->company_name ?? config('app.name') }} &copy; {{ date('Y') }}</p>
+            <p>{{ settings()->invoice_footer_text ?? __('Thank you for your business!') }}</p>
+            <p class="mt-1">{{ __(':param_1 &copy; :param_2', ['param_1' => settings()->company_name ?? config('app.name'), 'param_2' => date('Y')]) }}</p>
         </div>
     </div>
     <script>

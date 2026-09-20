@@ -39,20 +39,20 @@
             <div class="w-full max-w-lg bg-white rounded shadow-md overflow-hidden" style="background-color: {{ $mailStyles['background_color'] }}">
                 <!-- Header -->
                 <div class="px-6 py-4 text-center" style="background-color: {{ $mailStyles['primary_color'] }}">
-                    <h2 class="text-2xl font-bold text-white">{{ settings()?->company_name ?? 'Your Company' }}</h2>
+                    <h2 class="text-2xl font-bold text-white">{{ settings()?->company_name ?? __('Your Company') }}</h2>
                 </div>
                 <!-- Body -->
                 <div class="px-6 py-8 bg-white">
-                    <h3 class="text-xl font-bold mb-4" style="color: {{ $mailStyles['text_color'] }}">Your Invoice is Ready</h3>
-                    <p class="mb-6" style="color: {{ $mailStyles['text_color'] }}">Hello John Doe,</p>
-                    <p class="mb-6" style="color: {{ $mailStyles['text_color'] }}">Thank you for your recent purchase. Your invoice #INV-001 is attached to this email.</p>
+                    <h3 class="text-xl font-bold mb-4" style="color: {{ $mailStyles['text_color'] }}">{{ __('Your Invoice is Ready') }}</h3>
+                    <p class="mb-6" style="color: {{ $mailStyles['text_color'] }}">{{ __('Hello John Doe,') }}</p>
+                    <p class="mb-6" style="color: {{ $mailStyles['text_color'] }}">{{ __('Thank you for your recent purchase. Your invoice #INV-001 is attached to this email.') }}</p>
                     <div class="text-center">
-                        <a href="#" class="inline-block px-6 py-3 font-medium text-white {{ $mailStyles['button_radius'] }}" style="background-color: {{ $mailStyles['primary_color'] }}; text-decoration: none;">View Invoice</a>
+                        <a href="#" class="inline-block px-6 py-3 font-medium text-white {{ $mailStyles['button_radius'] }}" style="background-color: {{ $mailStyles['primary_color'] }}; text-decoration: none;">{{ __('View Invoice') }}</a>
                     </div>
                 </div>
                 <!-- Footer -->
                 <div class="px-6 py-4 text-center border-t border-gray-200 bg-gray-50">
-                    <p class="text-xs text-gray-500">&copy; {{ date('Y') }} {{ settings()?->company_name }}. All rights reserved.</p>
+                    <p class="text-xs text-gray-500">&copy; {{ __(':param_1 :param_2. All rights reserved.', ['param_1' => date('Y'), 'param_2' => settings()?->company_name]) }}</p>
                 </div>
             </div>
         </div>

@@ -1,4 +1,4 @@
-<nav aria-label="secondary" x-data="{ open: false }"
+<nav aria-label="{{ __('secondary') }}" x-data="{ open: false }"
     class="sticky top-0 z-20 flex items-center justify-between px-6 py-3 transition-transform duration-500 bg-white/90 dark:bg-gray-900/90 border-b border-gray-200 dark:border-gray-800 h-16"
     :class="{
         '-translate-y-full': scrollingDown,
@@ -8,7 +8,7 @@
 
     <div class="flex items-center gap-3">
         <button type="button" class="p-2 rounded-xl text-blue-500 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/30 transition-all" @click="isSidebarOpen = !isSidebarOpen">
-            <span class="sr-only">Open main menu</span>
+            <span class="sr-only">{{ __('Open main menu') }}</span>
             <x-icons.menu x-show="!isSidebarOpen" aria-hidden="true" class="w-6 h-6" />
             <x-icons.x x-show="isSidebarOpen" aria-hidden="true" class="w-6 h-6" />
         </button>

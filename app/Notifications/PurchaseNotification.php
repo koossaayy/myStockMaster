@@ -13,7 +13,7 @@ class PurchaseNotification extends BaseSystemNotification
 
     public function __construct(Purchase $purchase, string $channelType = 'mail')
     {
-        parent::__construct('Purchase Details - ' . $purchase->reference, $channelType);
+        parent::__construct(__('Purchase Details - :reference', ['reference' => $purchase->reference]), $channelType);
         $this->purchase = $purchase;
     }
 

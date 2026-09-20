@@ -38,7 +38,7 @@ class ProductTelegram extends Notification
     {
         return TelegramMessage::create()
             ->to($this->telegramChannel)
-            ->content(sprintf('Check out our new product: %s for %s', $this->productName, $this->productPrice));
+            ->content(sprintf(__('Check out our new product: %s for %s'), $this->productName, $this->productPrice));
     }
 
     /**

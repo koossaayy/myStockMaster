@@ -87,7 +87,7 @@ final readonly class NotifySaleStatusChangeAction
         $this->notificationService->sendRealTimeNotification('sale-updates', [
             'order_id' => $sale->id,
             'status' => $saleStatus->value,
-            'message' => sprintf('Sale #%s is now %s', $sale->reference, $saleStatus->value),
+            'message' => sprintf(__('Sale #%s is now %s'), $sale->reference, $saleStatus->value),
         ]);
     }
 }

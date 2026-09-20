@@ -70,7 +70,7 @@ class TemplateCustomizer extends Component
             'pattern_style' => $this->pattern_style,
         ]);
 
-        $this->dispatch('success', 'Template settings updated');
+        $this->dispatch('success', __('Template settings updated'));
     }
 
     public function render()

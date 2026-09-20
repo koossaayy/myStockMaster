@@ -105,7 +105,7 @@
         <div class="px-6">
             <div class="flex flex-col items-center justify-between text-center font-bold md:flex-row">
                 <div>
-                    Copyright© <span class="curr-year">
+                    {{ __('Copyright') }} <span class="curr-year">
                         {{ date('Y') }}
                     </span>
                     <a href="javascript:" class="text-primary transition hover:text-secondary">
